@@ -9,6 +9,34 @@ import { UserList } from "./user/UserList";
 import { UserCreate } from "./user/UserCreate";
 import { UserEdit } from "./user/UserEdit";
 import { UserShow } from "./user/UserShow";
+import { BlueprintList } from "./blueprint/BlueprintList";
+import { BlueprintCreate } from "./blueprint/BlueprintCreate";
+import { BlueprintEdit } from "./blueprint/BlueprintEdit";
+import { BlueprintShow } from "./blueprint/BlueprintShow";
+import { LeaderboardList } from "./leaderboard/LeaderboardList";
+import { LeaderboardCreate } from "./leaderboard/LeaderboardCreate";
+import { LeaderboardEdit } from "./leaderboard/LeaderboardEdit";
+import { LeaderboardShow } from "./leaderboard/LeaderboardShow";
+import { TransactionList } from "./transaction/TransactionList";
+import { TransactionCreate } from "./transaction/TransactionCreate";
+import { TransactionEdit } from "./transaction/TransactionEdit";
+import { TransactionShow } from "./transaction/TransactionShow";
+import { AdminList } from "./admin/AdminList";
+import { AdminCreate } from "./admin/AdminCreate";
+import { AdminEdit } from "./admin/AdminEdit";
+import { AdminShow } from "./admin/AdminShow";
+import { StakeList } from "./stake/StakeList";
+import { StakeCreate } from "./stake/StakeCreate";
+import { StakeEdit } from "./stake/StakeEdit";
+import { StakeShow } from "./stake/StakeShow";
+import { NotificationList } from "./notification/NotificationList";
+import { NotificationCreate } from "./notification/NotificationCreate";
+import { NotificationEdit } from "./notification/NotificationEdit";
+import { NotificationShow } from "./notification/NotificationShow";
+import { AppUserList } from "./appUser/AppUserList";
+import { AppUserCreate } from "./appUser/AppUserCreate";
+import { AppUserEdit } from "./appUser/AppUserEdit";
+import { AppUserShow } from "./appUser/AppUserShow";
 import { jwtAuthProvider } from "./auth-provider/ra-auth-jwt";
 
 const App = (): React.ReactElement => {
@@ -41,6 +69,55 @@ const App = (): React.ReactElement => {
           edit={UserEdit}
           create={UserCreate}
           show={UserShow}
+        />
+        <Resource
+          name="Blueprint"
+          list={BlueprintList}
+          edit={BlueprintEdit}
+          create={BlueprintCreate}
+          show={BlueprintShow}
+        />
+        <Resource
+          name="Leaderboard"
+          list={LeaderboardList}
+          edit={LeaderboardEdit}
+          create={LeaderboardCreate}
+          show={LeaderboardShow}
+        />
+        <Resource
+          name="Transaction"
+          list={TransactionList}
+          edit={TransactionEdit}
+          create={TransactionCreate}
+          show={TransactionShow}
+        />
+        <Resource
+          name="Admin"
+          list={AdminList}
+          edit={AdminEdit}
+          create={AdminCreate}
+          show={AdminShow}
+        />
+        <Resource
+          name="Stake"
+          list={StakeList}
+          edit={StakeEdit}
+          create={StakeCreate}
+          show={StakeShow}
+        />
+        <Resource
+          name="Notification"
+          list={NotificationList}
+          edit={NotificationEdit}
+          create={NotificationCreate}
+          show={NotificationShow}
+        />
+        <Resource
+          name="AppUser"
+          list={AppUserList}
+          edit={AppUserEdit}
+          create={AppUserCreate}
+          show={AppUserShow}
         />
       </Admin>
     </div>

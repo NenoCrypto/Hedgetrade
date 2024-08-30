@@ -11,13 +11,51 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsString, IsOptional, MaxLength } from "class-validator";
+import { AdminCreateNestedManyWithoutUsersInput } from "./AdminCreateNestedManyWithoutUsersInput";
+import {
+  ValidateNested,
+  IsOptional,
+  IsString,
+  MaxLength,
+  IsInt,
+  Max,
+} from "class-validator";
+import { Type } from "class-transformer";
+import { BlueprintCreateNestedManyWithoutUsersInput } from "./BlueprintCreateNestedManyWithoutUsersInput";
+import { LeaderboardCreateNestedManyWithoutUsersInput } from "./LeaderboardCreateNestedManyWithoutUsersInput";
+import { NotificationCreateNestedManyWithoutUsersInput } from "./NotificationCreateNestedManyWithoutUsersInput";
 import { IsJSONValue } from "../../validators";
 import { GraphQLJSON } from "graphql-type-json";
 import { InputJsonValue } from "../../types";
+import { StakeCreateNestedManyWithoutUsersInput } from "./StakeCreateNestedManyWithoutUsersInput";
+import { TransactionCreateNestedManyWithoutUsersInput } from "./TransactionCreateNestedManyWithoutUsersInput";
 
 @InputType()
 class UserCreateInput {
+  @ApiProperty({
+    required: false,
+    type: () => AdminCreateNestedManyWithoutUsersInput,
+  })
+  @ValidateNested()
+  @Type(() => AdminCreateNestedManyWithoutUsersInput)
+  @IsOptional()
+  @Field(() => AdminCreateNestedManyWithoutUsersInput, {
+    nullable: true,
+  })
+  admins?: AdminCreateNestedManyWithoutUsersInput;
+
+  @ApiProperty({
+    required: false,
+    type: () => BlueprintCreateNestedManyWithoutUsersInput,
+  })
+  @ValidateNested()
+  @Type(() => BlueprintCreateNestedManyWithoutUsersInput)
+  @IsOptional()
+  @Field(() => BlueprintCreateNestedManyWithoutUsersInput, {
+    nullable: true,
+  })
+  blueprints?: BlueprintCreateNestedManyWithoutUsersInput;
+
   @ApiProperty({
     required: false,
     type: String,
@@ -54,12 +92,48 @@ class UserCreateInput {
   lastName?: string | null;
 
   @ApiProperty({
+    required: false,
+    type: () => LeaderboardCreateNestedManyWithoutUsersInput,
+  })
+  @ValidateNested()
+  @Type(() => LeaderboardCreateNestedManyWithoutUsersInput)
+  @IsOptional()
+  @Field(() => LeaderboardCreateNestedManyWithoutUsersInput, {
+    nullable: true,
+  })
+  leaderboards?: LeaderboardCreateNestedManyWithoutUsersInput;
+
+  @ApiProperty({
+    required: false,
+    type: () => NotificationCreateNestedManyWithoutUsersInput,
+  })
+  @ValidateNested()
+  @Type(() => NotificationCreateNestedManyWithoutUsersInput)
+  @IsOptional()
+  @Field(() => NotificationCreateNestedManyWithoutUsersInput, {
+    nullable: true,
+  })
+  notifications?: NotificationCreateNestedManyWithoutUsersInput;
+
+  @ApiProperty({
     required: true,
     type: String,
   })
   @IsString()
   @Field(() => String)
   password!: string;
+
+  @ApiProperty({
+    required: false,
+    type: Number,
+  })
+  @IsInt()
+  @Max(99999999999)
+  @IsOptional()
+  @Field(() => Number, {
+    nullable: true,
+  })
+  rank?: number | null;
 
   @ApiProperty({
     required: true,
@@ -69,12 +143,48 @@ class UserCreateInput {
   roles!: InputJsonValue;
 
   @ApiProperty({
+    required: false,
+    type: () => StakeCreateNestedManyWithoutUsersInput,
+  })
+  @ValidateNested()
+  @Type(() => StakeCreateNestedManyWithoutUsersInput)
+  @IsOptional()
+  @Field(() => StakeCreateNestedManyWithoutUsersInput, {
+    nullable: true,
+  })
+  stakes?: StakeCreateNestedManyWithoutUsersInput;
+
+  @ApiProperty({
+    required: false,
+    type: () => TransactionCreateNestedManyWithoutUsersInput,
+  })
+  @ValidateNested()
+  @Type(() => TransactionCreateNestedManyWithoutUsersInput)
+  @IsOptional()
+  @Field(() => TransactionCreateNestedManyWithoutUsersInput, {
+    nullable: true,
+  })
+  transactions?: TransactionCreateNestedManyWithoutUsersInput;
+
+  @ApiProperty({
     required: true,
     type: String,
   })
   @IsString()
   @Field(() => String)
   username!: string;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @MaxLength(1000)
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  walletAddress?: string | null;
 }
 
 export { UserCreateInput as UserCreateInput };

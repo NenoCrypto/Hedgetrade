@@ -1,3 +1,7 @@
 export enum EnumRoles {
-  User = "user",
+  Admin = "admin",
+  AmateurTrader = "amateurTrader",
+  Guest = "guest",
+  Moderator = "moderator",
+  ProTrader = "proTrader",
 }

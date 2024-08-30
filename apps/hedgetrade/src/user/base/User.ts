@@ -11,14 +11,46 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { ObjectType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsDate, IsString, IsOptional, MaxLength } from "class-validator";
+import { Admin } from "../../admin/base/Admin";
+import {
+  ValidateNested,
+  IsOptional,
+  IsDate,
+  IsString,
+  MaxLength,
+  IsInt,
+  Max,
+} from "class-validator";
 import { Type } from "class-transformer";
+import { Blueprint } from "../../blueprint/base/Blueprint";
+import { Leaderboard } from "../../leaderboard/base/Leaderboard";
+import { Notification } from "../../notification/base/Notification";
 import { IsJSONValue } from "../../validators";
 import { GraphQLJSON } from "graphql-type-json";
 import { JsonValue } from "type-fest";
+import { Stake } from "../../stake/base/Stake";
+import { Transaction } from "../../transaction/base/Transaction";
 
 @ObjectType()
 class User {
+  @ApiProperty({
+    required: false,
+    type: () => [Admin],
+  })
+  @ValidateNested()
+  @Type(() => Admin)
+  @IsOptional()
+  admins?: Array<Admin>;
+
+  @ApiProperty({
+    required: false,
+    type: () => [Blueprint],
+  })
+  @ValidateNested()
+  @Type(() => Blueprint)
+  @IsOptional()
+  blueprints?: Array<Blueprint>;
+
   @ApiProperty({
     required: true,
   })
@@ -71,11 +103,59 @@ class User {
   lastName!: string | null;
 
   @ApiProperty({
+    required: false,
+    type: () => [Leaderboard],
+  })
+  @ValidateNested()
+  @Type(() => Leaderboard)
+  @IsOptional()
+  leaderboards?: Array<Leaderboard>;
+
+  @ApiProperty({
+    required: false,
+    type: () => [Notification],
+  })
+  @ValidateNested()
+  @Type(() => Notification)
+  @IsOptional()
+  notifications?: Array<Notification>;
+
+  @ApiProperty({
+    required: false,
+    type: Number,
+  })
+  @IsInt()
+  @Max(99999999999)
+  @IsOptional()
+  @Field(() => Number, {
+    nullable: true,
+  })
+  rank!: number | null;
+
+  @ApiProperty({
     required: true,
   })
   @IsJSONValue()
   @Field(() => GraphQLJSON)
   roles!: JsonValue;
+
+  @ApiProperty({
+    required: false,
+    type: () => [Stake],
+  })
+  @ValidateNested()
+  @Type(() => Stake)
+  @IsOptional()
+  stakes?: Array<Stake>;
+
+  @ApiProperty({
+    required: false,
+    type: () => [Transaction],
+  })
+  @ValidateNested()
+  @Type(() => Transaction)
+  @IsOptional()
+  transactions?: Array<Transaction>;
 
   @ApiProperty({
     required: true,
@@ -92,6 +172,18 @@ class User {
   @IsString()
   @Field(() => String)
   username!: string;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @MaxLength(1000)
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  walletAddress!: string | null;
 }
 
 export { User as User };

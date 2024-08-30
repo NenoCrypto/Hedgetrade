@@ -10,7 +10,18 @@ https://docs.amplication.com/how-to/custom-code
 ------------------------------------------------------------------------------
   */
 import { PrismaService } from "../../prisma/prisma.service";
-import { Prisma, User as PrismaUser } from "@prisma/client";
+
+import {
+  Prisma,
+  User as PrismaUser,
+  Admin as PrismaAdmin,
+  Blueprint as PrismaBlueprint,
+  Leaderboard as PrismaLeaderboard,
+  Notification as PrismaNotification,
+  Stake as PrismaStake,
+  Transaction as PrismaTransaction,
+} from "@prisma/client";
+
 import { PasswordService } from "../../auth/password.service";
 import { transformStringFieldUpdateInput } from "../../prisma.util";
 
@@ -58,5 +69,71 @@ export class UserServiceBase {
   }
   async deleteUser(args: Prisma.UserDeleteArgs): Promise<PrismaUser> {
     return this.prisma.user.delete(args);
+  }
+
+  async findAdmins(
+    parentId: string,
+    args: Prisma.AdminFindManyArgs
+  ): Promise<PrismaAdmin[]> {
+    return this.prisma.user
+      .findUniqueOrThrow({
+        where: { id: parentId },
+      })
+      .admins(args);
+  }
+
+  async findBlueprints(
+    parentId: string,
+    args: Prisma.BlueprintFindManyArgs
+  ): Promise<PrismaBlueprint[]> {
+    return this.prisma.user
+      .findUniqueOrThrow({
+        where: { id: parentId },
+      })
+      .blueprints(args);
+  }
+
+  async findLeaderboards(
+    parentId: string,
+    args: Prisma.LeaderboardFindManyArgs
+  ): Promise<PrismaLeaderboard[]> {
+    return this.prisma.user
+      .findUniqueOrThrow({
+        where: { id: parentId },
+      })
+      .leaderboards(args);
+  }
+
+  async findNotifications(
+    parentId: string,
+    args: Prisma.NotificationFindManyArgs
+  ): Promise<PrismaNotification[]> {
+    return this.prisma.user
+      .findUniqueOrThrow({
+        where: { id: parentId },
+      })
+      .notifications(args);
+  }
+
+  async findStakes(
+    parentId: string,
+    args: Prisma.StakeFindManyArgs
+  ): Promise<PrismaStake[]> {
+    return this.prisma.user
+      .findUniqueOrThrow({
+        where: { id: parentId },
+      })
+      .stakes(args);
+  }
+
+  async findTransactions(
+    parentId: string,
+    args: Prisma.TransactionFindManyArgs
+  ): Promise<PrismaTransaction[]> {
+    return this.prisma.user
+      .findUniqueOrThrow({
+        where: { id: parentId },
+      })
+      .transactions(args);
   }
 }
