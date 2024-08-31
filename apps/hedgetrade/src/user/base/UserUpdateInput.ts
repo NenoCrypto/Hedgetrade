@@ -11,13 +11,51 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsString, IsOptional, MaxLength } from "class-validator";
+import { AdminUpdateManyWithoutUsersInput } from "./AdminUpdateManyWithoutUsersInput";
+import {
+  ValidateNested,
+  IsOptional,
+  IsString,
+  MaxLength,
+  IsInt,
+  Max,
+} from "class-validator";
+import { Type } from "class-transformer";
+import { BlueprintUpdateManyWithoutUsersInput } from "./BlueprintUpdateManyWithoutUsersInput";
+import { LeaderboardUpdateManyWithoutUsersInput } from "./LeaderboardUpdateManyWithoutUsersInput";
+import { NotificationUpdateManyWithoutUsersInput } from "./NotificationUpdateManyWithoutUsersInput";
 import { IsJSONValue } from "../../validators";
 import { GraphQLJSON } from "graphql-type-json";
 import { InputJsonValue } from "../../types";
+import { StakeUpdateManyWithoutUsersInput } from "./StakeUpdateManyWithoutUsersInput";
+import { TransactionUpdateManyWithoutUsersInput } from "./TransactionUpdateManyWithoutUsersInput";
 
 @InputType()
 class UserUpdateInput {
+  @ApiProperty({
+    required: false,
+    type: () => AdminUpdateManyWithoutUsersInput,
+  })
+  @ValidateNested()
+  @Type(() => AdminUpdateManyWithoutUsersInput)
+  @IsOptional()
+  @Field(() => AdminUpdateManyWithoutUsersInput, {
+    nullable: true,
+  })
+  admins?: AdminUpdateManyWithoutUsersInput;
+
+  @ApiProperty({
+    required: false,
+    type: () => BlueprintUpdateManyWithoutUsersInput,
+  })
+  @ValidateNested()
+  @Type(() => BlueprintUpdateManyWithoutUsersInput)
+  @IsOptional()
+  @Field(() => BlueprintUpdateManyWithoutUsersInput, {
+    nullable: true,
+  })
+  blueprints?: BlueprintUpdateManyWithoutUsersInput;
+
   @ApiProperty({
     required: false,
     type: String,
@@ -55,6 +93,30 @@ class UserUpdateInput {
 
   @ApiProperty({
     required: false,
+    type: () => LeaderboardUpdateManyWithoutUsersInput,
+  })
+  @ValidateNested()
+  @Type(() => LeaderboardUpdateManyWithoutUsersInput)
+  @IsOptional()
+  @Field(() => LeaderboardUpdateManyWithoutUsersInput, {
+    nullable: true,
+  })
+  leaderboards?: LeaderboardUpdateManyWithoutUsersInput;
+
+  @ApiProperty({
+    required: false,
+    type: () => NotificationUpdateManyWithoutUsersInput,
+  })
+  @ValidateNested()
+  @Type(() => NotificationUpdateManyWithoutUsersInput)
+  @IsOptional()
+  @Field(() => NotificationUpdateManyWithoutUsersInput, {
+    nullable: true,
+  })
+  notifications?: NotificationUpdateManyWithoutUsersInput;
+
+  @ApiProperty({
+    required: false,
     type: String,
   })
   @IsString()
@@ -63,6 +125,18 @@ class UserUpdateInput {
     nullable: true,
   })
   password?: string;
+
+  @ApiProperty({
+    required: false,
+    type: Number,
+  })
+  @IsInt()
+  @Max(99999999999)
+  @IsOptional()
+  @Field(() => Number, {
+    nullable: true,
+  })
+  rank?: number | null;
 
   @ApiProperty({
     required: false,
@@ -76,6 +150,30 @@ class UserUpdateInput {
 
   @ApiProperty({
     required: false,
+    type: () => StakeUpdateManyWithoutUsersInput,
+  })
+  @ValidateNested()
+  @Type(() => StakeUpdateManyWithoutUsersInput)
+  @IsOptional()
+  @Field(() => StakeUpdateManyWithoutUsersInput, {
+    nullable: true,
+  })
+  stakes?: StakeUpdateManyWithoutUsersInput;
+
+  @ApiProperty({
+    required: false,
+    type: () => TransactionUpdateManyWithoutUsersInput,
+  })
+  @ValidateNested()
+  @Type(() => TransactionUpdateManyWithoutUsersInput)
+  @IsOptional()
+  @Field(() => TransactionUpdateManyWithoutUsersInput, {
+    nullable: true,
+  })
+  transactions?: TransactionUpdateManyWithoutUsersInput;
+
+  @ApiProperty({
+    required: false,
     type: String,
   })
   @IsString()
@@ -84,6 +182,18 @@ class UserUpdateInput {
     nullable: true,
   })
   username?: string;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @MaxLength(1000)
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  walletAddress?: string | null;
 }
 
 export { UserUpdateInput as UserUpdateInput };

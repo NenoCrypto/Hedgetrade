@@ -26,6 +26,18 @@ import { UserFindUniqueArgs } from "./UserFindUniqueArgs";
 import { CreateUserArgs } from "./CreateUserArgs";
 import { UpdateUserArgs } from "./UpdateUserArgs";
 import { DeleteUserArgs } from "./DeleteUserArgs";
+import { AdminFindManyArgs } from "../../admin/base/AdminFindManyArgs";
+import { Admin } from "../../admin/base/Admin";
+import { BlueprintFindManyArgs } from "../../blueprint/base/BlueprintFindManyArgs";
+import { Blueprint } from "../../blueprint/base/Blueprint";
+import { LeaderboardFindManyArgs } from "../../leaderboard/base/LeaderboardFindManyArgs";
+import { Leaderboard } from "../../leaderboard/base/Leaderboard";
+import { NotificationFindManyArgs } from "../../notification/base/NotificationFindManyArgs";
+import { Notification } from "../../notification/base/Notification";
+import { StakeFindManyArgs } from "../../stake/base/StakeFindManyArgs";
+import { Stake } from "../../stake/base/Stake";
+import { TransactionFindManyArgs } from "../../transaction/base/TransactionFindManyArgs";
+import { Transaction } from "../../transaction/base/Transaction";
 import { UserService } from "../user.service";
 @common.UseGuards(GqlDefaultAuthGuard, gqlACGuard.GqlACGuard)
 @graphql.Resolver(() => User)
@@ -130,5 +142,125 @@ export class UserResolverBase {
       }
       throw error;
     }
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @graphql.ResolveField(() => [Admin], { name: "admins" })
+  @nestAccessControl.UseRoles({
+    resource: "Admin",
+    action: "read",
+    possession: "any",
+  })
+  async findAdmins(
+    @graphql.Parent() parent: User,
+    @graphql.Args() args: AdminFindManyArgs
+  ): Promise<Admin[]> {
+    const results = await this.service.findAdmins(parent.id, args);
+
+    if (!results) {
+      return [];
+    }
+
+    return results;
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @graphql.ResolveField(() => [Blueprint], { name: "blueprints" })
+  @nestAccessControl.UseRoles({
+    resource: "Blueprint",
+    action: "read",
+    possession: "any",
+  })
+  async findBlueprints(
+    @graphql.Parent() parent: User,
+    @graphql.Args() args: BlueprintFindManyArgs
+  ): Promise<Blueprint[]> {
+    const results = await this.service.findBlueprints(parent.id, args);
+
+    if (!results) {
+      return [];
+    }
+
+    return results;
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @graphql.ResolveField(() => [Leaderboard], { name: "leaderboards" })
+  @nestAccessControl.UseRoles({
+    resource: "Leaderboard",
+    action: "read",
+    possession: "any",
+  })
+  async findLeaderboards(
+    @graphql.Parent() parent: User,
+    @graphql.Args() args: LeaderboardFindManyArgs
+  ): Promise<Leaderboard[]> {
+    const results = await this.service.findLeaderboards(parent.id, args);
+
+    if (!results) {
+      return [];
+    }
+
+    return results;
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @graphql.ResolveField(() => [Notification], { name: "notifications" })
+  @nestAccessControl.UseRoles({
+    resource: "Notification",
+    action: "read",
+    possession: "any",
+  })
+  async findNotifications(
+    @graphql.Parent() parent: User,
+    @graphql.Args() args: NotificationFindManyArgs
+  ): Promise<Notification[]> {
+    const results = await this.service.findNotifications(parent.id, args);
+
+    if (!results) {
+      return [];
+    }
+
+    return results;
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @graphql.ResolveField(() => [Stake], { name: "stakes" })
+  @nestAccessControl.UseRoles({
+    resource: "Stake",
+    action: "read",
+    possession: "any",
+  })
+  async findStakes(
+    @graphql.Parent() parent: User,
+    @graphql.Args() args: StakeFindManyArgs
+  ): Promise<Stake[]> {
+    const results = await this.service.findStakes(parent.id, args);
+
+    if (!results) {
+      return [];
+    }
+
+    return results;
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @graphql.ResolveField(() => [Transaction], { name: "transactions" })
+  @nestAccessControl.UseRoles({
+    resource: "Transaction",
+    action: "read",
+    possession: "any",
+  })
+  async findTransactions(
+    @graphql.Parent() parent: User,
+    @graphql.Args() args: TransactionFindManyArgs
+  ): Promise<Transaction[]> {
+    const results = await this.service.findTransactions(parent.id, args);
+
+    if (!results) {
+      return [];
+    }
+
+    return results;
   }
 }

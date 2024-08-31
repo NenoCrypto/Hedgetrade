@@ -94,6 +94,17 @@ class UserOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
+  rank?: SortOrder;
+
+  @ApiProperty({
+    required: false,
+    enum: ["asc", "desc"],
+  })
+  @IsOptional()
+  @IsEnum(SortOrder)
+  @Field(() => SortOrder, {
+    nullable: true,
+  })
   roles?: SortOrder;
 
   @ApiProperty({
@@ -117,6 +128,17 @@ class UserOrderByInput {
     nullable: true,
   })
   username?: SortOrder;
+
+  @ApiProperty({
+    required: false,
+    enum: ["asc", "desc"],
+  })
+  @IsOptional()
+  @IsEnum(SortOrder)
+  @Field(() => SortOrder, {
+    nullable: true,
+  })
+  walletAddress?: SortOrder;
 }
 
 export { UserOrderByInput as UserOrderByInput };
