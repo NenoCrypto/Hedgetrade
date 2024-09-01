@@ -28,6 +28,7 @@ const palette = createPalette(
 
 const themeOptions: ThemeOptions = {
   palette,
+
 };
 
 export const theme = createTheme(merge({}, defaultTheme, themeOptions));

@@ -1,59 +1,82 @@
-// .App {
-//   .MuiAppBar-colorSecondary {
-//     background-color: black;
+.App {
+ 
+  .MuiAppBar-colorSecondary {
+    background-color: black;
 
-//     .RaAppBar-menuButton-13 {
-//       background-color: yellow;
-//     }
-//   }
+    .RaAppBar-menuButton-13 {
+      background-color: yellow;
+    }
 
-//   .MuiDrawer-paper {
-//     background-color: red;
+  }
 
-//     .MuiListItemIcon-root {
-//       color: white;
-//     }
-//   }
+  .MuiDrawer-paper {
+    background-color: #292929;
 
-//   .MuiButton-textPrimary {
-//     background-color: purple;
-//     margin: 0 0.5rem;
-//     color: white;
-//     padding: 0.5rem 1rem;
+    .MuiListItemIcon-root {
+      color: white;
+    }
+  }
 
-//     &:hover {
-//       background-color: blue;
-//     }
-//   }
+  
+  .MuiButton-textPrimary {
+    background-color: purple;
+    margin: 0 0.5rem;
+    color: white;
+    padding: 0.5rem 1rem;
 
-//   .MuiTableRow-head {
-//     .MuiTableCell-head {
-//       background-color: black;
-//       color: white;
-//     }
+    &:hover {
+      background-color: blue;
+    }
+  }
 
-//     .MuiTableSortLabel-root {
-//       &:hover {
-//         color: red;
+  .MuiTableRow-head {
+    .MuiTableCell-head {
+      background-color: black;
+      color: white;
+    }
 
-//         .MuiTableSortLabel-icon {
-//           color: red !important;
-//         }
-//       }
-//       .MuiTableSortLabel-icon {
-//         color: white !important;
-//       }
-//     }
-//     .MuiTableSortLabel-active {
-//       color: green;
+    .MuiTableSortLabel-root {
+      &:hover {
+        color: red;
 
-//       .MuiTableSortLabel-icon {
-//         color: green !important;
-//       }
-//     }
-//   }
+        .MuiTableSortLabel-icon {
+          color: red !important;
+        }
+      }
+      .MuiTableSortLabel-icon {
+        color: white !important;
+      }
+    }
+    .MuiTableSortLabel-active {
+      color: green;
 
-//   .MuiFormLabel-root {
-//     color: magenta;
-//   }
-// }
+      .MuiTableSortLabel-icon {
+        color: green !important;
+      }
+    }
+  }
+
+  .MuiFormLabel-root {
+    color: magenta;
+  }
+}
+
+
+.RaLayout-root-1{
+    background-color: #292929 !important;
+}
+
+.RaLayout-content-4{
+    background-color: #292929 !important;
+}
+
+.makeStyles-sidebarMenu-40{
+    margin: 10px;
+    background: linear-gradient(to bottom right, #6bcff9, #f52aca);
+    border-radius: 10px;
+  } 
+
+
+  .MuiPaper-root{
+    // background-color: 303030;
+  }

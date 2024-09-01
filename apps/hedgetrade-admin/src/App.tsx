@@ -38,6 +38,8 @@ import { AppUserCreate } from "./appUser/AppUserCreate";
 import { AppUserEdit } from "./appUser/AppUserEdit";
 import { AppUserShow } from "./appUser/AppUserShow";
 import { jwtAuthProvider } from "./auth-provider/ra-auth-jwt";
+import { SideMenu } from "./Components/SideMenu";
+import {  LinearProgress, Paper } from "@material-ui/core";
 
 const App = (): React.ReactElement => {
   const [dataProvider, setDataProvider] = useState<DataProvider | null>(null);
@@ -51,7 +53,9 @@ const App = (): React.ReactElement => {
       });
   }, []);
   if (!dataProvider) {
-    return <div>Loading</div>;
+    return <Paper>
+      <LinearProgress/>
+    </Paper>;
   }
   return (
     <div className="App">
@@ -62,6 +66,7 @@ const App = (): React.ReactElement => {
         theme={theme}
         dashboard={Dashboard}
         loginPage={Login}
+        menu={SideMenu}
       >
         <Resource
           name="User"
