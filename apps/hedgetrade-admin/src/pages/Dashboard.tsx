@@ -121,7 +121,7 @@ const LeaderBoard = [
 const Dashboard = () => (
   <div className="dashboard-container">
     <Grid container spacing={3}>
-      <Grid item xs={12} md={3}>
+      <Grid item xs={6} md={3}>
         <DashBoardCard
           color={"#76D1F5"}
           leftLabel={"HedgeScore"}
@@ -132,7 +132,7 @@ const Dashboard = () => (
         />
       </Grid>
 
-      <Grid item xs={12} md={3}>
+      <Grid item xs={6} md={3}>
         <DashBoardCard
           color={"#9799A9"}
           leftLabel={"Published"}
@@ -143,7 +143,7 @@ const Dashboard = () => (
         />
       </Grid>
 
-      <Grid item xs={12} md={3}>
+      <Grid item xs={6} md={3}>
         <DashBoardCard
           color={"#d476dc"}
           leftLabel={"Purchased"}
@@ -154,7 +154,7 @@ const Dashboard = () => (
         />
       </Grid>
 
-      <Grid item xs={12} md={3}>
+      <Grid item xs={6} md={3}>
         <DashBoardCard
           color={"#991181"}
           leftLabel={"ACA Earned"}

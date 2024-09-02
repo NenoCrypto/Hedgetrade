@@ -1,6 +1,6 @@
 .dashboard-card{
     word-wrap: break-word;
-    background-color: #303030 !important;
+    background-color: #171717 !important;
     background-clip: border-box;
     text-align: center;
     color: #b7a9a9 !important;
@@ -19,8 +19,17 @@
     text-align: left;
 }
 
+@media (max-width: 600px) {
+
+    .dashboard-stats{
+        margin-top: 20px;
+        text-align: left;
+    }
+    
+}
+
 .blueprint-card{
-    background-color: #303030 !important;
+    background-color: #171717 !important;
     background-clip: border-box;
     color: #f2f2f2 !important;
     border-radius: 15px !important;
@@ -28,9 +37,9 @@
 }
 
 .leaderboard-card{
-    background-color: #303030 !important;
+    background-color: #171717 !important;
     background-clip: border-box;
-    color: #f2f2f2 !important;
+    color: #373737 !important;
     border-radius: 15px !important;
     margin-bottom: 10px;
 }
@@ -55,3 +64,41 @@
     height: 12px;
     width: 12px;
 }
+
+.card-header{
+    border-bottom: 1px solid #b7a9a9;
+    margin-bottom: 10px !important;    
+}
+
+.blueprint-button{
+    background-color: #323232 !important;
+    border-radius: 5px !important;
+    width: -webkit-fill-available !important;
+    color: white !important;
+}
+
+.blueprint-button-text{
+    font-size: 0.8rem !important;
+
+}
+
+@media (max-width: 600px) {
+    .MuiGrid-grid-xs-5 {
+        flex-basis: 38% !important;
+    }
+
+    .dashboard-stats-desc{
+        font-size: 0.25rem !important;
+    }
+}
+
+.MuiAvatar-root  {
+    width: 24px !important;
+    height: 24px !important;
+}
+
+.RaButton-smallIcon-9 {
+    font-size: 11px !important;
+}
+
+

@@ -4,76 +4,72 @@ import "./card.css";
 import { Button } from "react-admin";
 import { StarIcon } from "../Icons";
 import React from "react";
+import { BluePrintDataLabel } from "../DataLabels";
 export const BluePrintCard = () => {
   return (
     // <Paper elevation={6}>
     <Card className="blueprint-card">
       <CardContent>
-        <Grid container spacing={6}>
+        <Grid className="card-header" container spacing={4}>
           <Grid item className="grid-row-item-left" xs={6} md={6}>
             <Avatar
               variant="circle"
-              sizes="48"
+              sizes="24"
               className={"blueprint-avatar"}
             />
             <Typography variant="body2">Jimmy</Typography>
           </Grid>
-          <Grid item className="grid-row-item-right" xs={6} md={6}>
-            <StarIcon size={20} />
-            <Typography>543</Typography>
+          <Grid  item className="grid-row-item-right" xs={6} md={6}>
+            <StarIcon size={12} />
+            <Typography variant="body2">543</Typography>
             <a href="#">
-              <DotsIcon />
+              <DotsIcon size={12} />
             </a>
           </Grid>
         </Grid>
-        <Grid container spacing={2}>
+        <Grid container spacing={1}>
           <Grid className="grid-row-item-left" item xs={6} md={6}>
-            <FireIcon size={20} />
-            <FireIcon size={20} />
-            <FireIcon size={20} />
+            <FireIcon size={12} />
+            <FireIcon size={12} />
+            <FireIcon size={12} />
           </Grid>
 
           <Grid item xs={6} md={6}>
-            <Typography align="right" variant="h6">
+            <Typography variant="h4"  align="right" >
               ETH/BTC
             </Typography>
           </Grid>
-
+          </Grid>
+        <Grid container spacing={1}>
           <Grid item xs={6} md={6}>
-            <Typography align="center" variant="h6">
-              00:45:25
-            </Typography>
+            <BluePrintDataLabel
+              dataLabel={"Time Left"}
+              dataValue={" 00:45:25"}
+            />
           </Grid>
 
           <Grid item xs={6} md={6}>
-            <Typography align="center" variant="h6">
-              100
-            </Typography>
+            <BluePrintDataLabel dataLabel={"Stake Price (ACA)"} dataValue={"100"} />
           </Grid>
 
           <Grid item xs={6} md={6}>
-            <Typography align="center" variant="h6">
-              327
-            </Typography>
+            <BluePrintDataLabel dataLabel={"Buyers"} dataValue={"327"} />
           </Grid>
 
           <Grid item xs={6} md={6}>
-            <Typography align="center" variant="h6" color={"secondary"}>
-              +60%
-            </Typography>
+            <BluePrintDataLabel dataLabel={"Potential Profit"} dataValue={"+60%"} />
           </Grid>
 
           <Grid item xs={6} md={6}>
-            <Button fullWidth color="secondary">
-              <Typography variant="body2">Manage</Typography>
+            <Button className="blueprint-button" fullWidth >
+              <Typography variant="body2" className="blueprint-button-text">Manage</Typography>
             </Button>
           </Grid>
           <Grid item xs={6} md={6}>
-            <Button color="secondary" fullWidth>
-              <Typography variant="body2">Stake</Typography>
+            <Button className="blueprint-button"  fullWidth>
+              <Typography variant="body2" className="blueprint-button-text">Stake</Typography>
             </Button>
           </Grid>
-          
         </Grid>
       </CardContent>
     </Card>

@@ -6,8 +6,15 @@ interface CustomLayoutProps extends LayoutProps {
   children: ReactNode;
 }
 
+// export const AppBar = () => {
+//   return(
+//     <>
+//     d
+//     </>
+//   )
+// }
 export const Layout: React.FC<CustomLayoutProps> = ({ children, ...props }) => (
-  <ReactAdminLayout menu={SideMenu} {...props}>
+  <ReactAdminLayout menu={SideMenu}  {...props} >
     {children}
   </ReactAdminLayout>
 );

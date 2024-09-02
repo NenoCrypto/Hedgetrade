@@ -39,7 +39,10 @@ import { AppUserEdit } from "./appUser/AppUserEdit";
 import { AppUserShow } from "./appUser/AppUserShow";
 import { jwtAuthProvider } from "./auth-provider/ra-auth-jwt";
 import { SideMenu } from "./Components/SideMenu";
-import {  LinearProgress, Paper } from "@material-ui/core";
+import { LinearProgress, Paper } from "@material-ui/core";
+import CreateBluePrint from "./pages/CreateBluePrint";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import CustomRoutes from "./Components/CustomRoutes";
 
 const App = (): React.ReactElement => {
   const [dataProvider, setDataProvider] = useState<DataProvider | null>(null);
@@ -53,78 +56,83 @@ const App = (): React.ReactElement => {
       });
   }, []);
   if (!dataProvider) {
-    return <Paper>
-      <LinearProgress/>
-    </Paper>;
+    return (
+      <Paper>
+        <LinearProgress />
+      </Paper>
+    );
   }
   return (
     <div className="App">
-      <Admin
-        title={"Hedgetrade-1"}
-        dataProvider={dataProvider}
-        authProvider={jwtAuthProvider}
-        theme={theme}
-        dashboard={Dashboard}
-        loginPage={Login}
-        menu={SideMenu}
-      >
-        <Resource
-          name="User"
-          list={UserList}
-          edit={UserEdit}
-          create={UserCreate}
-          show={UserShow}
-        />
-        <Resource
-          name="Blueprint"
-          list={BlueprintList}
-          edit={BlueprintEdit}
-          create={BlueprintCreate}
-          show={BlueprintShow}
-        />
-        <Resource
-          name="Leaderboard"
-          list={LeaderboardList}
-          edit={LeaderboardEdit}
-          create={LeaderboardCreate}
-          show={LeaderboardShow}
-        />
-        <Resource
-          name="Transaction"
-          list={TransactionList}
-          edit={TransactionEdit}
-          create={TransactionCreate}
-          show={TransactionShow}
-        />
-        <Resource
-          name="Admin"
-          list={AdminList}
-          edit={AdminEdit}
-          create={AdminCreate}
-          show={AdminShow}
-        />
-        <Resource
-          name="Stake"
-          list={StakeList}
-          edit={StakeEdit}
-          create={StakeCreate}
-          show={StakeShow}
-        />
-        <Resource
-          name="Notification"
-          list={NotificationList}
-          edit={NotificationEdit}
-          create={NotificationCreate}
-          show={NotificationShow}
-        />
-        <Resource
-          name="AppUser"
-          list={AppUserList}
-          edit={AppUserEdit}
-          create={AppUserCreate}
-          show={AppUserShow}
-        />
-      </Admin>
+        <Admin
+          title={"Hedgetrade-1"}
+          dataProvider={dataProvider}
+          authProvider={jwtAuthProvider}
+          theme={theme}
+          dashboard={Dashboard}
+          loginPage={Login}
+          menu={SideMenu}
+          customRoutes={CustomRoutes}
+        >
+          <Resource
+            name="User"
+            list={UserList}
+            edit={UserEdit}
+            create={UserCreate}
+            show={UserShow}
+          />
+          <Resource
+            name="Blueprint"
+            list={BlueprintList}
+            edit={BlueprintEdit}
+            create={BlueprintCreate}
+            show={BlueprintShow}
+          />
+          <Resource
+            name="Leaderboard"
+            list={LeaderboardList}
+            edit={LeaderboardEdit}
+            create={LeaderboardCreate}
+            show={LeaderboardShow}
+          />
+          <Resource
+            name="Transaction"
+            list={TransactionList}
+            edit={TransactionEdit}
+            create={TransactionCreate}
+            show={TransactionShow}
+          />
+          <Resource
+            name="Admin"
+            list={AdminList}
+            edit={AdminEdit}
+            create={AdminCreate}
+            show={AdminShow}
+          />
+          <Resource
+            name="Stake"
+            list={StakeList}
+            edit={StakeEdit}
+            create={StakeCreate}
+            show={StakeShow}
+          />
+          <Resource
+            name="Notification"
+            list={NotificationList}
+            edit={NotificationEdit}
+            create={NotificationCreate}
+            show={NotificationShow}
+          />
+          <Resource
+            name="AppUser"
+            list={AppUserList}
+            edit={AppUserEdit}
+            create={AppUserCreate}
+            show={AppUserShow}
+          />
+        
+        </Admin>
+     
     </div>
   );
 };
