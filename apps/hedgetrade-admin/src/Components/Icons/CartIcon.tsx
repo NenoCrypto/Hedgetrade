@@ -1,21 +1,27 @@
-import React, { SVGProps } from 'react';
+import React from 'react';
 
-export const CartIcon: React.FC<SVGProps<SVGSVGElement>> = (props) => {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
+interface CartIconProps {
+  size?: number;
+  color?: string;
+  className?: string;
+}
+
+export const CartIcon: React.FC<CartIconProps> = ({ size = 24, color = '#000000', className }) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    width={size}
+    height={size}
+    xmlns="http://www.w3.org/2000/svg"
+    className={className}
+  >
+    <path
+      d="M6.29977 5H21L19 12H7.37671M20 16H8L6 3H3M9 20C9 20.5523 8.55228 21 8 21C7.44772 21 7 20.5523 7 20C7 19.4477 7.44772 19 8 19C8.55228 19 9 19.4477 9 20ZM20 20C20 20.5523 19.5523 21 19 21C18.4477 21 18 20.5523 18 20C18 19.4477 18.4477 19 19 19C19.5523 19 20 19.4477 20 20Z"
+      stroke="#ffffff"
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
-      {...props}
-    >
-      <circle cx="9" cy="21" r="1"></circle>
-      <circle cx="20" cy="21" r="1"></circle>
-      <path d="M1 1h4l1.68 7.39a1 1 0 0 0 .72.61l12.88 2.3a1 1 0 0 0 1.1-.69l3.32-9.97"></path>
-      <path d="M6 14h14v6H6z"></path>
-    </svg>
-  );
-};
+    />
+  </svg>
+);
+

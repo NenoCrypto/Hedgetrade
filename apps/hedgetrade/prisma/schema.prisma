@@ -36,6 +36,7 @@ model Blueprint {
   stakes       Stake[]
   successRate  Float?
   transactions Transaction[]
+  buyPair      String?
   updatedAt    DateTime      @updatedAt
   user         User?         @relation(fields: [userId], references: [id])
   userId       String?

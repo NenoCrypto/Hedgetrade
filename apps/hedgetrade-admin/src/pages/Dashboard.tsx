@@ -8,10 +8,10 @@ import "./dashboard.css";
 import { DashBoardCard } from "../Components/Cards/DashBoardCard";
 import { BluePrintCard } from "../Components/Cards/BluePrintCard";
 import { StarIcon } from "../Components/Icons/StarIcon";
-import { PencilIcon } from "../Components/Icons/PencilIcon";
 import { CartIcon } from "../Components/Icons/CartIcon";
 import { WalletIcon } from "../Components/Icons/WalletIcon";
 import { LeaderBoardCard } from "../Components/Cards/LeaderBoardCard";
+import { NoteBookIcon, PencilIcon } from "../Components/Icons";
 // import { Bar } from 'react-chartjs-2';
 // import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale } from 'chart.js';
 
@@ -119,6 +119,7 @@ const LeaderBoard = [
 ];
 
 const Dashboard = () => (
+  
   <div className="dashboard-container">
     <Grid container spacing={3}>
       <Grid item xs={6} md={3}>
@@ -139,7 +140,7 @@ const Dashboard = () => (
           leftValue={"12"}
           rightLabel={"Success Rate"}
           rightValue={"77%"}
-          icon={PencilIcon}
+          icon={NoteBookIcon}
         />
       </Grid>
 

@@ -1,18 +1,17 @@
 import { SVGProps } from 'react';
 import {
   DashboardIcon,
-  TicketIcon,
-  WaterMeterIcon,
-  UsageIcon,
-  RoleIcon,
+  WalletIcon,
+  CartIcon,
+  AddIcon,
+  NoteBookIcon,
+  StarIcon,
+  LogoutIcon,
   UserIcon,
-  AlertIcon,
-  SettingsIcon,
-  DocumentIcon,
-  SupplierCustomerIcon,
-  ProductIcon,
-  PaymentIcon,
-  LogsIcon
+  NoteBookIconServer,
+  ExchangeIcon,
+  ClockIcon,
+  RobotIcon
 } from "../Components/Icons";
 import { IconProps } from '../Components/Icons/withIconProps';
 
@@ -26,57 +25,86 @@ type MenuItem = {
   title: string;
   icon: React.FC<IconProps>; // Using FC<IconProps> to match the HOC-wrapped icons
   submenu: SubMenuItem[];
+  link:string
 };
 
 export const MenuConfig: MenuItem[] = [
   {
     title: "HedgeBoard",
     icon: DashboardIcon,
-    submenu: []
+    submenu: [],
+    link:'/'
   },
   {
-    title: "Deposit & Withdrawal",
-    icon: DashboardIcon,
-    submenu: []
+    title: "Wallet",
+    icon: WalletIcon,
+    submenu: [],
+    link:'/wallet'
   },
   {
-    title: "Buy Tokens",
-    icon: DashboardIcon,
-    submenu: []
+    title: "Swap",
+    icon: ExchangeIcon,
+    submenu: [],
+    link:'/buy-aca-tokens'
   },
   {
     title: "AutoTrader",
-    icon: DashboardIcon,
-    submenu: []
+    icon: RobotIcon,
+    submenu: [],
+    link:'/auto-trader'
   },
   {
     title: "BluePrint Market",
     icon: DashboardIcon,
-    submenu: []
+    submenu: [],
+    link:'/blueprint-market'
+  },
+  {
+    title: "Create BluePrint",
+    icon: AddIcon,
+    submenu: [],
+    link:'/create-blueprint'
   },
   {
     title: "My BluePrints",
-    icon: DashboardIcon,
-    submenu: []
+    icon: NoteBookIcon,
+    submenu: [],
+    link:'/my-blueprints'
   },
   {
     title: "Purchased BluePrints",
-    icon: DashboardIcon,
-    submenu: []
+    icon: CartIcon,
+    submenu: [],
+    link:'/purchased-blueprints'
+  },
+  {
+    title: "Account History",
+    icon: ClockIcon,
+    submenu: [],
+    link:'/purchased-blueprints'
   },
   {
     title: "LeaderBoard",
-    icon: DashboardIcon,
-    submenu: []
+    icon: StarIcon,
+    submenu: [],
+    link:'/leaderboard'
   },
   {
     title: "My Account",
-    icon: DashboardIcon,
-    submenu: []
+    icon: UserIcon,
+    submenu: [],
+    link:'/my-account'
   },
   {
-    title: "How To Guide",
-    icon: DashboardIcon,
-    submenu: []
+    title: "Hedge Guide",
+    icon: NoteBookIconServer,
+    submenu: [],
+    link:'/how-to-guide'
+  },
+  {
+    title: "Logout",
+    icon: LogoutIcon,
+    submenu: [],
+    link:'/logout'
   },
 ];
