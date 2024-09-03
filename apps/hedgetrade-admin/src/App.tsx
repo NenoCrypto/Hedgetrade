@@ -1,21 +1,46 @@
 import React, { useEffect, useState } from "react";
-import { DataProvider } from "react-admin";
+import { Admin, DataProvider, Resource } from "react-admin";
 import buildGraphQLProvider from "./data-provider/graphqlDataProvider";
+import { theme } from "./theme/theme";
+import Login from "./Login";
 import "./App.scss";
 import Dashboard from "./pages/Dashboard";
-import { LinearProgress, Paper, CssBaseline } from "@material-ui/core";
-import { CustomRoutes } from "./Components/CustomRoutes";
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
-import CreateBluePrint from "./pages/CreateBluePrint";
-import { SideMenu } from "./Components/SideMenu";
-import TopBar from "./Components/TopBar";
-import Footer from "./Components/Footer";
-import { CustomThemeProvider } from "./Contexts/ThemeContext";
+import { UserList } from "./user/UserList";
+import { UserCreate } from "./user/UserCreate";
+import { UserEdit } from "./user/UserEdit";
+import { UserShow } from "./user/UserShow";
+import { LeaderboardList } from "./leaderboard/LeaderboardList";
+import { LeaderboardCreate } from "./leaderboard/LeaderboardCreate";
+import { LeaderboardEdit } from "./leaderboard/LeaderboardEdit";
+import { LeaderboardShow } from "./leaderboard/LeaderboardShow";
+import { BlueprintList } from "./blueprint/BlueprintList";
+import { BlueprintCreate } from "./blueprint/BlueprintCreate";
+import { BlueprintEdit } from "./blueprint/BlueprintEdit";
+import { BlueprintShow } from "./blueprint/BlueprintShow";
+import { TransactionList } from "./transaction/TransactionList";
+import { TransactionCreate } from "./transaction/TransactionCreate";
+import { TransactionEdit } from "./transaction/TransactionEdit";
+import { TransactionShow } from "./transaction/TransactionShow";
+import { AdminList } from "./admin/AdminList";
+import { AdminCreate } from "./admin/AdminCreate";
+import { AdminEdit } from "./admin/AdminEdit";
+import { AdminShow } from "./admin/AdminShow";
+import { StakeList } from "./stake/StakeList";
+import { StakeCreate } from "./stake/StakeCreate";
+import { StakeEdit } from "./stake/StakeEdit";
+import { StakeShow } from "./stake/StakeShow";
+import { NotificationList } from "./notification/NotificationList";
+import { NotificationCreate } from "./notification/NotificationCreate";
+import { NotificationEdit } from "./notification/NotificationEdit";
+import { NotificationShow } from "./notification/NotificationShow";
+import { AppUserList } from "./appUser/AppUserList";
+import { AppUserCreate } from "./appUser/AppUserCreate";
+import { AppUserEdit } from "./appUser/AppUserEdit";
+import { AppUserShow } from "./appUser/AppUserShow";
+import { jwtAuthProvider } from "./auth-provider/ra-auth-jwt";
 
 const App = (): React.ReactElement => {
   const [dataProvider, setDataProvider] = useState<DataProvider | null>(null);
-  const [isSidebarMinimized, setIsSidebarMinimized] = useState(false);
-
   useEffect(() => {
     buildGraphQLProvider
       .then((provider: any) => {
@@ -25,55 +50,77 @@ const App = (): React.ReactElement => {
         console.log(error);
       });
   }, []);
-
   if (!dataProvider) {
-    return (
-      <Paper>
-        <LinearProgress />
-      </Paper>
-    );
+    return <div>Loading</div>;
   }
-
-  const toggleSidebar = () => {
-    setIsSidebarMinimized(!isSidebarMinimized); // Toggle sidebar minimized state
-  };
-
   return (
-    <CustomThemeProvider>
-      <CssBaseline />
-      <Router>
-        <div className="App">
-          <TopBar toggleSidebar={toggleSidebar} isSidebarMinimized={isSidebarMinimized} />
-          <div style={{ display: "flex" }}>
-            <SideMenu isMinimized={isSidebarMinimized} /> 
-            <div
-              style={{
-                marginLeft: isSidebarMinimized ? "60px" : "200px", 
-                padding: "20px",
-                width: "100%",
-                transition: "margin-left 0.3s",
-                backgroundColor: "#111111",
-                minHeight: "100vh",
-                marginTop: "40px"
-              }}
-            >
-              <Routes>
-                {CustomRoutes}
-                <Route path="/" element={<Dashboard />} key="dashboard" />
-                <Route path="/create-blueprint" element={<CreateBluePrint />} key="create-blueprint" />
-                <Route path="/my-blueprints" element={<CreateBluePrint />} key="my-blueprints" />
-                <Route path="/blueprint-marketplace" element={<CreateBluePrint />} key="blueprint-marketplace" />
-                <Route path="/purchased-blueprints" element={<CreateBluePrint />} key="purchased-blueprints" />
-                <Route path="/my-account" element={<CreateBluePrint />} key="my-account" />
-                <Route path="/leaderboard" element={<CreateBluePrint />} key="leaderboard" />
-                <Route path="/how-to-guides" element={<CreateBluePrint />} key="how-to-guides" />
-              </Routes>
-            </div>
-          </div>
-          <Footer />
-        </div>
-      </Router>
-    </CustomThemeProvider>
+    <div className="App">
+      <Admin
+        title={"Hedgetrade-1"}
+        dataProvider={dataProvider}
+        authProvider={jwtAuthProvider}
+        theme={theme}
+        dashboard={Dashboard}
+        loginPage={Login}
+      >
+        <Resource
+          name="User"
+          list={UserList}
+          edit={UserEdit}
+          create={UserCreate}
+          show={UserShow}
+        />
+        <Resource
+          name="Leaderboard"
+          list={LeaderboardList}
+          edit={LeaderboardEdit}
+          create={LeaderboardCreate}
+          show={LeaderboardShow}
+        />
+        <Resource
+          name="Blueprint"
+          list={BlueprintList}
+          edit={BlueprintEdit}
+          create={BlueprintCreate}
+          show={BlueprintShow}
+        />
+        <Resource
+          name="Transaction"
+          list={TransactionList}
+          edit={TransactionEdit}
+          create={TransactionCreate}
+          show={TransactionShow}
+        />
+        <Resource
+          name="Admin"
+          list={AdminList}
+          edit={AdminEdit}
+          create={AdminCreate}
+          show={AdminShow}
+        />
+        <Resource
+          name="Stake"
+          list={StakeList}
+          edit={StakeEdit}
+          create={StakeCreate}
+          show={StakeShow}
+        />
+        <Resource
+          name="Notification"
+          list={NotificationList}
+          edit={NotificationEdit}
+          create={NotificationCreate}
+          show={NotificationShow}
+        />
+        <Resource
+          name="AppUser"
+          list={AppUserList}
+          edit={AppUserEdit}
+          create={AppUserCreate}
+          show={AppUserShow}
+        />
+      </Admin>
+    </div>
   );
 };
 
