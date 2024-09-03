@@ -1,7 +1,7 @@
 import { Module } from "@nestjs/common";
 import { UserModule } from "./user/user.module";
-import { BlueprintModule } from "./blueprint/blueprint.module";
 import { LeaderboardModule } from "./leaderboard/leaderboard.module";
+import { BlueprintModule } from "./blueprint/blueprint.module";
 import { TransactionModule } from "./transaction/transaction.module";
 import { AdminModule } from "./admin/admin.module";
 import { StakeModule } from "./stake/stake.module";
@@ -28,8 +28,8 @@ import { AuthModule } from "./auth/auth.module";
     AuthModule,
     LoggerModule,
     UserModule,
-    BlueprintModule,
     LeaderboardModule,
+    BlueprintModule,
     TransactionModule,
     AdminModule,
     StakeModule,
