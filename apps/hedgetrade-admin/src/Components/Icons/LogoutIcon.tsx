@@ -6,7 +6,7 @@ interface LogoutIconProps {
   className?: string;
 }
 
-export const LogoutIcon: React.FC<LogoutIconProps> = ({ size = 24, color = '#ffffff', className }) => (
+export const LogoutIcon: React.FC<LogoutIconProps> = ({ size = 12, color = '#ffffff', className }) => (
   <svg
     viewBox="0 0 24 24"
     fill="none"

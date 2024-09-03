@@ -6,7 +6,7 @@ interface WalletIconProps {
   className?: string; // Additional classes
 }
 
-export const WalletIcon: React.FC<WalletIconProps> = ({ size = 24, color = '#ffffff', className }) => (
+export const WalletIcon: React.FC<WalletIconProps> = ({ size = 12, color = '#ffffff', className }) => (
   <svg
     viewBox="0 0 24 24"
     fill="none"

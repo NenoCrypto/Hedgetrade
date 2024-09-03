@@ -7,8 +7,8 @@ export const StarIcon: React.FC<SVGProps<SVGSVGElement>> = (props) => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       stroke="#ffffff"
-      width="24"
-      height="24"
+      width="12"
+      height="12"
     >
       <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
       <g

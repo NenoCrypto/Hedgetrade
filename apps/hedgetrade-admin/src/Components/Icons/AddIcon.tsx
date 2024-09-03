@@ -6,9 +6,8 @@ interface AddIconProps {
   className?: string; // Additional classes
 }
 
-export const AddIcon: React.FC<AddIconProps> = ({ size = 24, color = '#ffffff', className }) => (
+export const AddIcon: React.FC<AddIconProps> = ({ size = 12, color = '#ffffff', className }) => (
   <svg
-    viewBox="0 0 24 24"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     width={size}

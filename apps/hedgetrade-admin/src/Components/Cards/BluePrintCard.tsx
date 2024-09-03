@@ -60,15 +60,15 @@ export const BluePrintCard = () => {
             <BluePrintDataLabel dataLabel={"Potential Profit"} dataValue={"+60%"} />
           </Grid>
 
-          <Grid item xs={6} md={6}>
-            <Button className="blueprint-button" fullWidth >
-              <Typography variant="body2" className="blueprint-button-text">Manage</Typography>
-            </Button>
+          <Grid item xs={6} md={6} style={{display:"flex"}}>
+            <a className="blueprint-button"  >
+              Manage
+            </a>
           </Grid>
-          <Grid item xs={6} md={6}>
-            <Button className="blueprint-button"  fullWidth>
-              <Typography variant="body2" className="blueprint-button-text">Stake</Typography>
-            </Button>
+          <Grid item xs={6} md={6} style={{display:"flex"}}>
+            <a className="blueprint-button"  >
+              Stake
+            </a>
           </Grid>
         </Grid>
       </CardContent>

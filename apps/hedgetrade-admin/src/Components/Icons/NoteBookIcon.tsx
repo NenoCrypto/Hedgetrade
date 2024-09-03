@@ -6,7 +6,7 @@ interface NoteBookIconProps {
   className?: string; // Additional classes
 }
 
-export const NoteBookIcon: React.FC<NoteBookIconProps> = ({ size = 24, color = '#ffffff', className }) => (
+export const NoteBookIcon: React.FC<NoteBookIconProps> = ({ size = 12, color = '#ffffff', className }) => (
   <svg
     stroke={color}
     height={size}

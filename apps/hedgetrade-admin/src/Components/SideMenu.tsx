@@ -57,7 +57,7 @@ export const SideMenu: React.FC<SideMenuProps> = ({ isMinimized }) => {
             className={classes.menuHeader}
           >
             <ListItemIcon style={{ color: 'inherit' }}>
-              <menuItem.icon />
+              <menuItem.icon height={16} width={16} />
             </ListItemIcon>
             <ListItemText primary={menuItem.title} className={classes.listItemText} />
           </ListItem>

@@ -7,12 +7,11 @@ interface NoteBookIconProps {
 }
 
 export const NoteBookIconServer: React.FC<NoteBookIconProps> = ({
-  size = 24,
+  size = 12,
   color = "#ffffff",
   className,
 }) => (
   <svg
-    viewBox="0 0 24 24"
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
     stroke={color}

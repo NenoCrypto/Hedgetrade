@@ -6,7 +6,7 @@ interface ClockIconProps {
   className?: string;
 }
 
-export const ClockIcon: React.FC<ClockIconProps> = ({ size = 24, color = '#000000', className }) => (
+export const ClockIcon: React.FC<ClockIconProps> = ({ size = 12, color = '#000000', className }) => (
   <svg
     viewBox="0 0 24 24"
     fill="none"

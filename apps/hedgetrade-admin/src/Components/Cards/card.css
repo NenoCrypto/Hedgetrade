@@ -73,8 +73,10 @@
 .blueprint-button{
     background-color: #323232 !important;
     border-radius: 5px !important;
-    width: -webkit-fill-available !important;
+    width: 100%;
     color: white !important;
+    padding: 10px;
+    text-align: center;
 }
 
 .blueprint-button-text{

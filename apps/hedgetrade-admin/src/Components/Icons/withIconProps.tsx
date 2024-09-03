@@ -11,7 +11,7 @@ const withIconProps = (
   IconComponent: React.FC<SVGProps<SVGSVGElement>>
 ): React.FC<IconProps> => {
   return ({
-    size = 24,
+    size = 12,
     color = '#fff',
     className,
     onClick,

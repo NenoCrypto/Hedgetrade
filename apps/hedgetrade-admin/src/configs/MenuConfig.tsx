@@ -11,9 +11,11 @@ import {
   NoteBookIconServer,
   ExchangeIcon,
   ClockIcon,
-  RobotIcon
+  RobotIcon,
+  ProductIcon
 } from "../Components/Icons";
 import { IconProps } from '../Components/Icons/withIconProps';
+import { CogIcon } from '../Components/Icons/CogIcon';
 
 // Define types for the menu configuration
 type SubMenuItem = {
@@ -49,7 +51,7 @@ export const MenuConfig: MenuItem[] = [
   },
   {
     title: "AutoTrader",
-    icon: RobotIcon,
+    icon: ProductIcon,
     submenu: [],
     link:'/auto-trader'
   },

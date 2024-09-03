@@ -6,7 +6,7 @@ interface CartIconProps {
   className?: string;
 }
 
-export const CartIcon: React.FC<CartIconProps> = ({ size = 24, color = '#000000', className }) => (
+export const CartIcon: React.FC<CartIconProps> = ({ size = 12, color = '#000000', className }) => (
   <svg
     viewBox="0 0 24 24"
     fill="none"

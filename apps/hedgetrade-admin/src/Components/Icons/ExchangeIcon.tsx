@@ -10,6 +10,8 @@ export const ExchangeIcon: React.FC<SVGProps<SVGSVGElement>> = (props) => {
       viewBox="0 0 512.422 512.422"
       stroke="#ffffff"
       {...props}
+      height={12}
+      width={12}
     >
       <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
       <g
