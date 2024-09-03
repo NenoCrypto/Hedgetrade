@@ -33,8 +33,6 @@ export class AuthService {
       credentials.username,
       credentials.password
     );
-
-    // console.log(user)
     if (!user) {
       throw new UnauthorizedException("The passed credentials are incorrect");
     }

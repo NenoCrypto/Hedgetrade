@@ -151,156 +151,6 @@
   },
   {
     "role": "admin",
-    "resource": "Blueprint",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "amateurTrader",
-    "resource": "Blueprint",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "guest",
-    "resource": "Blueprint",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "moderator",
-    "resource": "Blueprint",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "proTrader",
-    "resource": "Blueprint",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
-    "resource": "Blueprint",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "amateurTrader",
-    "resource": "Blueprint",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "guest",
-    "resource": "Blueprint",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "moderator",
-    "resource": "Blueprint",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "proTrader",
-    "resource": "Blueprint",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
-    "resource": "Blueprint",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "amateurTrader",
-    "resource": "Blueprint",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "guest",
-    "resource": "Blueprint",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "moderator",
-    "resource": "Blueprint",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "proTrader",
-    "resource": "Blueprint",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
-    "resource": "Blueprint",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "amateurTrader",
-    "resource": "Blueprint",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "guest",
-    "resource": "Blueprint",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "moderator",
-    "resource": "Blueprint",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "proTrader",
-    "resource": "Blueprint",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
-    "resource": "Blueprint",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "amateurTrader",
-    "resource": "Blueprint",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "guest",
-    "resource": "Blueprint",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "moderator",
-    "resource": "Blueprint",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "proTrader",
-    "resource": "Blueprint",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
     "resource": "Leaderboard",
     "action": "read:own",
     "attributes": "*"
@@ -446,6 +296,156 @@
   {
     "role": "proTrader",
     "resource": "Leaderboard",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "Blueprint",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "amateurTrader",
+    "resource": "Blueprint",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "guest",
+    "resource": "Blueprint",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "moderator",
+    "resource": "Blueprint",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "proTrader",
+    "resource": "Blueprint",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "Blueprint",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "amateurTrader",
+    "resource": "Blueprint",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "guest",
+    "resource": "Blueprint",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "moderator",
+    "resource": "Blueprint",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "proTrader",
+    "resource": "Blueprint",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "Blueprint",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "amateurTrader",
+    "resource": "Blueprint",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "guest",
+    "resource": "Blueprint",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "moderator",
+    "resource": "Blueprint",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "proTrader",
+    "resource": "Blueprint",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "Blueprint",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "amateurTrader",
+    "resource": "Blueprint",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "guest",
+    "resource": "Blueprint",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "moderator",
+    "resource": "Blueprint",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "proTrader",
+    "resource": "Blueprint",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "Blueprint",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "amateurTrader",
+    "resource": "Blueprint",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "guest",
+    "resource": "Blueprint",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "moderator",
+    "resource": "Blueprint",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "proTrader",
+    "resource": "Blueprint",
     "action": "read:any",
     "attributes": "*"
   },
