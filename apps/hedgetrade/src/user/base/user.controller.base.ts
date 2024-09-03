@@ -351,12 +351,23 @@ export class UserControllerBase {
     const results = await this.service.findBlueprints(params.id, {
       ...query,
       select: {
+        aiData: true,
+        buyPair: true,
         createdAt: true,
         description: true,
+        exchange: true,
+        expiry: true,
         id: true,
+        maxOrder: true,
+        minOrder: true,
         name: true,
+        sellPair: true,
+        stake: true,
         stakeAmount: true,
+        stopLoss: true,
         successRate: true,
+        takeProfit: true,
+        tradeType: true,
         updatedAt: true,
 
         user: {
