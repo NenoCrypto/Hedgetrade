@@ -14,10 +14,14 @@ const useStyles = makeStyles((theme) => ({
       props.isSidebarMinimized ? "60px" : "200px",
     backgroundColor:"transparent",
     boxShadow:'none',
-    color:'#f2f2f2'
+    color:'#f2f2f2',
   },
   menuButton: {
     marginRight: theme.spacing(2),
+    
+  },
+  logo:{
+    marginBottom:"-10px"
   },
   title: {
     flexGrow: 1,
@@ -52,7 +56,7 @@ const TopBar: React.FC<TopBarProps> = ({ toggleSidebar, isSidebarMinimized }) =>
           <MenuIcon />
         </IconButton>
 
-        <img src="/logo.png" width={150}/>
+        <img className={classes.logo} src="/logo.png" width={130}/>
       </div>
        
 

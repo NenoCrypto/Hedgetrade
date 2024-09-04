@@ -56,10 +56,10 @@ export const MenuConfig: MenuItem[] = [
     link:'/auto-trader'
   },
   {
-    title: "BluePrint Market",
+    title: "BluePrints Market",
     icon: DashboardIcon,
     submenu: [],
-    link:'/blueprint-market'
+    link:'/blueprints-market'
   },
   {
     title: "Create BluePrint",
@@ -79,12 +79,12 @@ export const MenuConfig: MenuItem[] = [
     submenu: [],
     link:'/purchased-blueprints'
   },
-  {
-    title: "Account History",
-    icon: ClockIcon,
-    submenu: [],
-    link:'/purchased-blueprints'
-  },
+  // {
+  //   title: "Account History",
+  //   icon: ClockIcon,
+  //   submenu: [],
+  //   link:'/purchased-blueprints'
+  // },
   {
     title: "LeaderBoard",
     icon: StarIcon,

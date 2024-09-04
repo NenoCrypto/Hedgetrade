@@ -2,7 +2,7 @@ import React, { SVGProps } from "react";
 
 export const RobotIcon: React.FC<SVGProps<SVGSVGElement>> = (props) => {
   return (
-  <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" stroke="#ffffff">
+  <svg width={12} height={12} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" stroke="#ffffff">
     <g strokeWidth="0"></g>
     <g strokeLinecap="round" strokeLinejoin="round"></g>
     <g>

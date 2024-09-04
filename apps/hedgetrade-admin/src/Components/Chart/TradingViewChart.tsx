@@ -1,8 +1,14 @@
 import React, { useEffect, useRef, useState } from "react";
 import { ColorType, createChart, ISeriesApi, IChartApi } from "lightweight-charts";
-import { DemoData } from "./data";
+import { MarketDropdown } from "../Form/MarketDropdown";
 
-const TradingViewChart: React.FC = () => {
+// Define the props interface
+interface TradingViewChartProps {
+  selectedPair: string;
+  setSelectedPair: React.Dispatch<React.SetStateAction<string>>;
+}
+
+const TradingViewChart: React.FC<TradingViewChartProps> = ({ selectedPair, setSelectedPair }) => {
   const chartContainerRef = useRef<HTMLDivElement | null>(null);
   const chartRef = useRef<IChartApi | null>(null);
   const [candlestickSeries, setCandlestickSeries] = useState<ISeriesApi<"Candlestick"> | null>(null);
@@ -16,15 +22,15 @@ const TradingViewChart: React.FC = () => {
           textColor: '#f2f2f2',
           background: {
             type: ColorType.Solid,
-            color: '#303030',
+            color: '#171717',
           },
         },
         grid: {
           vertLines: {
-            color: '#303030',
+            color: '#171717',
           },
           horzLines: {
-            color: '#303030',
+            color: '#171717',
           },
         },
         timeScale: {
@@ -45,27 +51,6 @@ const TradingViewChart: React.FC = () => {
 
       setCandlestickSeries(series);
 
-      // Set initial data
-      series.setData(DemoData);
-
-      // Adding markers to the series
-      series.setMarkers([
-        {
-          time: '2023-08-02',
-          position: 'aboveBar',
-          color: '#ff0000',
-          shape: 'arrowDown',
-          text: 'Sell Signal',
-        },
-        {
-          time: '2023-08-04',
-          position: 'belowBar',
-          color: '#00ff00',
-          shape: 'arrowUp',
-          text: 'Buy Signal',
-        },
-      ]);
-
       // Resize chart on window resize
       const handleResize = () => {
         if (chartContainerRef.current) {
@@ -82,8 +67,35 @@ const TradingViewChart: React.FC = () => {
     }
   }, []);
 
+  useEffect(() => {
+    if (candlestickSeries && selectedPair) {
+      // Fetch candlestick data from Binance
+      fetch(`https://api.binance.com/api/v3/klines?symbol=${selectedPair}&interval=1d&limit=100`)
+        .then(response => response.json())
+        .then(data => {
+          const formattedData = data.map((item: any) => ({
+            time: item[0] / 1000, // convert to seconds
+            open: parseFloat(item[1]),
+            high: parseFloat(item[2]),
+            low: parseFloat(item[3]),
+            close: parseFloat(item[4]),
+          }));
+
+          // Set data to the chart
+          candlestickSeries.setData(formattedData);
+        })
+        .catch(error => console.error('Error fetching data:', error));
+    }
+  }, [candlestickSeries, selectedPair]);
+
   return (
     <div style={{ position: 'relative', width: '100%' }}>
+      {/* <MarketDropdown
+        value={selectedPair}
+        onChange={(event) => setSelectedPair(event.target.value as string)}
+        onBlur={() => {}}
+        name="tradingPair"
+      /> */}
       <div ref={chartContainerRef} style={{ position: 'relative', width: '100%', height: '380px' }} />
     </div>
   );

@@ -107,10 +107,17 @@
 .top-bar{
   display: flex;
   justify-content: space-between;
+  background-color: #111111;
 }
 
 .right-menu{
   display: flex;
   justify-content: space-around;
   gap: 10px;
+}
+
+.flex-row{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }

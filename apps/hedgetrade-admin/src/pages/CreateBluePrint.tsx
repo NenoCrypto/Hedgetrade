@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import {
   Grid,
@@ -9,84 +9,86 @@ import {
   Typography,
 } from "@material-ui/core";
 import TradingViewChart from "../Components/Chart/TradingViewChart";
-import { DashBoardCard } from "../Components/Cards/DashBoardCard";
-import { StarIcon } from "../Components/Icons";
-import { CartIcon } from "../Components/Icons/CartIcon";
-import { PencilIcon } from "../Components/Icons/PencilIcon";
-import { WalletIcon } from "../Components/Icons/WalletIcon";
+import { NoteBookIconServer } from "../Components/Icons";
+import axios from "axios";
+import { MarketDropdown } from "../Components/Form/MarketDropdown"; // Import the MarketDropdown component
+import FormInput from "../Components/Form/FormInput";
 
 const CreateBluePrint = () => {
   const { handleSubmit, control } = useForm();
+  const loggedInUser = "cm0l3ojkh0002u7cn28olsmn1";
+  const [selectedPair, setSelectedPair] = useState<string>("BTCUSDT");
 
-  const onSubmit = (data: any) => {
-    console.log(data);
+  const onSubmit = async (data: any) => {
+    const blueprintData = {
+      aiData: {}, // Add relevant AI data if applicable
+      buyPair: data.buyPair,
+      description: data.description || "",
+      exchange: data.exchange,
+      expiry: data.expiry,
+      maxOrder: data.maxOrder,
+      minOrder: data.orderPrice,
+      name: data.name || "Blueprint Name",
+      sellPair: data.sellPair,
+      stake: data.stake,
+      stakeAmount: parseFloat(data.stakeAmount) || 0,
+      stopLoss: data.stopLoss,
+      successRate: parseFloat(data.successRate) || 0,
+      takeProfit: data.takeProfit,
+      tradeType: data.tradeType,
+      user: {
+        id: loggedInUser,
+      },
+    };
+
+    const token =
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjbTBoeTYyOTYwMDAwemZhaDYwMHk3NW5rIiwidXNlcm5hbWUiOiJhZG1pbiIsImlhdCI6MTcyNTM3NzI3MywiZXhwIjoxNzI1NTUwMDczfQ.9rXTPUPHZpAqPXl-yyMefYTvDfUDBh_3Gg-k6iTImqE";
+
+    const headers = {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    };
+
+    try {
+      const response = await axios.post(
+        "http://localhost:3002/api/blueprints",
+        blueprintData,
+        { headers }
+      );
+      console.log("Blueprint created successfully", response.data);
+    } catch (error) {
+      console.error("Error creating blueprint", error);
+    }
   };
 
   return (
     <div className="dashboard-container">
-      <Grid container spacing={3}>
-        <Grid item xs={12} md={3}>
-          <DashBoardCard
-            color={"#76D1F5"}
-            leftLabel={"HedgeScore"}
-            leftValue={"532"}
-            rightLabel={"Trader Rank"}
-            rightValue={"23"}
-            icon={StarIcon}
-          />
-        </Grid>
+              <Typography variant="h5" className="dashboard-header">Create BluePrint</Typography>
 
-        <Grid item xs={12} md={3}>
-          <DashBoardCard
-            color={"#9799A9"}
-            leftLabel={"Published"}
-            leftValue={"12"}
-            rightLabel={"Success Rate"}
-            rightValue={"77%"}
-            icon={PencilIcon}
-          />
-        </Grid>
-
-        <Grid item xs={12} md={3}>
-          <DashBoardCard
-            color={"#d476dc"}
-            leftLabel={"Purchased"}
-            leftValue={"5"}
-            rightLabel={" Success Rate"}
-            rightValue={"80%"}
-            icon={CartIcon}
-          />
-        </Grid>
-
-        <Grid item xs={12} md={3}>
-          <DashBoardCard
-            color={"#991181"}
-            leftLabel={"ACA Earned"}
-            leftValue={"11,200"}
-            rightLabel={"Total Profit"}
-            rightValue={"755%"}
-            icon={WalletIcon}
-          />
-        </Grid>
-      </Grid>
       <Grid container spacing={4}>
-        <Grid item xs={12} md={3}>
+        <Grid item xs={12} md={5}>
           <Card className="hedge-card">
             <CardContent>
-              <Typography variant="h6" gutterBottom>
-                Create Blueprint
-              </Typography>
+              <div className="flex-row">
+                {/* <Typography variant="h6" gutterBottom>
+                  Create Blueprint
+                </Typography> */}
+
+                <a href="#">
+                  <NoteBookIconServer />
+                </a>
+              </div>
               <form onSubmit={handleSubmit(onSubmit)}>
                 <Grid container spacing={2}>
                   <Grid item xs={12} sm={6}>
                     <Controller
-                      name="buyPair"
+                      name="exchange"
                       control={control}
                       defaultValue=""
                       render={({ field }) => (
                         <TextField
                           {...field}
-                          label="Buy Pair"
+                          label="Exchange"
                           variant="outlined"
                           fullWidth
                         />
@@ -96,15 +98,17 @@ const CreateBluePrint = () => {
 
                   <Grid item xs={12} sm={6}>
                     <Controller
-                      name="sellPair"
+                      name="Trade Pair"
                       control={control}
                       defaultValue=""
                       render={({ field }) => (
-                        <TextField
-                          {...field}
-                          label="Sell Pair"
-                          variant="outlined"
-                          fullWidth
+                        <MarketDropdown
+                          value={selectedPair}
+                          onChange={(event) =>
+                            setSelectedPair(event.target.value as string)
+                          }
+                          onBlur={() => {}}
+                          name="tradingPair"
                         />
                       )}
                     />
@@ -119,22 +123,6 @@ const CreateBluePrint = () => {
                         <TextField
                           {...field}
                           label="Trade Type"
-                          variant="outlined"
-                          fullWidth
-                        />
-                      )}
-                    />
-                  </Grid>
-
-                  <Grid item xs={12} sm={6}>
-                    <Controller
-                      name="exchange"
-                      control={control}
-                      defaultValue=""
-                      render={({ field }) => (
-                        <TextField
-                          {...field}
-                          label="Exchange"
                           variant="outlined"
                           fullWidth
                         />
@@ -238,6 +226,56 @@ const CreateBluePrint = () => {
                     />
                   </Grid>
 
+                  <Grid item xs={12} sm={6}>
+                    <Controller
+                      name="successRate"
+                      control={control}
+                      defaultValue=""
+                      render={({ field }) => (
+                        <TextField
+                          {...field}
+                          label="Success Rate"
+                          variant="outlined"
+                          fullWidth
+                        />
+                      )}
+                    />
+                  </Grid>
+
+                  {/* <Grid item xs={12}>
+                    <Controller
+                      name="stakeAmount"
+                      control={control}
+                      defaultValue=""
+                      render={({ field }) => (
+                        <TextField
+                          {...field}
+                          label="Stake Amount"
+                          variant="outlined"
+                          fullWidth
+                        />
+                      )}
+                    />
+                  </Grid> */}
+
+                  {/* <Grid item xs={12}>
+                    <Controller
+                      name="description"
+                      control={control}
+                      defaultValue=""
+                      render={({ field }) => (
+                        <TextField
+                          {...field}
+                          label="Description"
+                          variant="outlined"
+                          fullWidth
+                          multiline
+                          rows={4}
+                        />
+                      )}
+                    />
+                  </Grid> */}
+
                   <Grid item xs={12}>
                     <Button
                       type="submit"
@@ -254,18 +292,19 @@ const CreateBluePrint = () => {
           </Card>
         </Grid>
 
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12} md={7}>
           <Card className="hedge-card">
             <CardContent>
-              <Typography variant="h6" gutterBottom>
-                Trading View Chart
-              </Typography>
-              <TradingViewChart />
+           
+              <TradingViewChart
+                selectedPair={selectedPair}
+                setSelectedPair={setSelectedPair}
+              />
             </CardContent>
           </Card>
         </Grid>
 
-        <Grid item xs={12} md={3}>
+        {/* <Grid item xs={12} md={3}>
           <Card className="hedge-card">
             <CardContent>
               <Typography variant="h6" gutterBottom>
@@ -276,42 +315,26 @@ const CreateBluePrint = () => {
                 Staking
               </Typography>
               <Typography variant="body2" paragraph>
-                Higher the stake, more confident you are in your prediction as
-                well higher are the returns. Blueprint purchased price is 10% of
-                your stake.
+                Higher the stake, more confident you are in your prediction
               </Typography>
 
               <Typography variant="subtitle1" gutterBottom>
-                Successful Close
+                Expiry
               </Typography>
               <Typography variant="body2" paragraph>
-                The blueprint will close Successful if it hits both the entry
-                and exit price. In this event, you will receive back all of your
-                stakes and buyins minus the commission.
+                Set expiry of your blueprints to your discretion
               </Typography>
 
               <Typography variant="subtitle1" gutterBottom>
-                Neutral Close
+                Price limits
               </Typography>
               <Typography variant="body2" paragraph>
-                The blueprint will close Neutral if it fails to hit the entry
-                price and the exit price. In this event, you will receive back
-                all of your stake minus the commission and the buyers will
-                receive back their buyins.
-              </Typography>
-
-              <Typography variant="subtitle1" gutterBottom>
-                Failed Close
-              </Typography>
-              <Typography variant="body2">
-                The blueprint will close failed if it hits the entry price but
-                not the exit price. In this event, your stake will be
-                distributed among the buyers and the buyers will get back their
-                buyins minus the commission.
+                Set the minimum and maximum order price limits that you feel
+                should be followed
               </Typography>
             </CardContent>
           </Card>
-        </Grid>
+        </Grid> */}
       </Grid>
     </div>
   );

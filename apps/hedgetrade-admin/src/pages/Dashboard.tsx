@@ -12,38 +12,7 @@ import { CartIcon } from "../Components/Icons/CartIcon";
 import { WalletIcon } from "../Components/Icons/WalletIcon";
 import { LeaderBoardCard } from "../Components/Cards/LeaderBoardCard";
 import { NoteBookIcon, PencilIcon } from "../Components/Icons";
-// import { Bar } from 'react-chartjs-2';
-// import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale } from 'chart.js';
 
-// Register Chart.js components
-// ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale);
-
-// Sample data for the charts
-const chartData1 = {
-  labels: ["January", "February", "March", "April"],
-  datasets: [
-    {
-      label: "Sales",
-      data: [30, 45, 60, 75],
-      backgroundColor: "rgba(255, 99, 132, 0.2)",
-      borderColor: "rgba(255, 99, 132, 1)",
-      borderWidth: 1,
-    },
-  ],
-};
-
-const chartData2 = {
-  labels: ["Red", "Blue", "Yellow", "Green"],
-  datasets: [
-    {
-      label: "Traffic",
-      data: [55, 49, 80, 81],
-      backgroundColor: "rgba(54, 162, 235, 0.2)",
-      borderColor: "rgba(54, 162, 235, 1)",
-      borderWidth: 1,
-    },
-  ],
-};
 
 const blueprints = [
   {
