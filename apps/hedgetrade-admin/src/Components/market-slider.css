@@ -1,0 +1,42 @@
+/* src/components/market-slider.css */
+
+.market-slider-container {
+    width: 100%;
+    margin: 0 auto;
+  }
+  
+  .market-slider-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+  }
+  
+  .market-slider-item-content {
+    display: flex;
+    align-items: center;
+  }
+  
+  .market-icon {
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+  }
+  
+  .market-info {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .market-price {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  .market-symbol {
+    font-size: 14px;
+    color: #555;
+  }
+
+  .slick-list{
+    width: 330px;
+  }

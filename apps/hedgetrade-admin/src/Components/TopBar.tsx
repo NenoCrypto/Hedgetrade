@@ -11,6 +11,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import { makeStyles } from "@material-ui/core/styles";
 import { ColorModeContext } from "../Contexts/ThemeContext";
 import { LogoIcon } from "./Icons";
+import MarketSlider from "./MarketSlider";
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -68,7 +69,7 @@ const TopBar: React.FC<TopBarProps> = ({
         </div>
 
         <div className="right-menu">
-          <div className="right-menu-markets">
+          {/* <div className="right-menu-markets">
             <div className="right-menu-item">
               <img src="/favicon.png" width={20} />
               <Typography>0.0567 ACA</Typography>
@@ -81,7 +82,8 @@ const TopBar: React.FC<TopBarProps> = ({
               <img src="/tather.png" width={20} />
               <Typography>0.0567 USD</Typography>
             </div>
-          </div>
+          </div> */}
+          <MarketSlider/>
           <div className="right-menu-profile">
             <Typography>0xvd...edefe</Typography>
             <Avatar />

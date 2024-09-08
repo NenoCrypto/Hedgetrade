@@ -147,3 +147,24 @@
   min-width: auto !important;
   flex-shrink: 0;
 }
+
+
+/* src/components/MarketSlider.css */
+
+.right-menu-markets {
+  width: 100% !important;
+}
+
+.right-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  background-color: #333;
+  border-radius: 10px;
+  color: #fff !important;
+}
+
+.right-menu-item img {
+  border-radius: 50%;
+}

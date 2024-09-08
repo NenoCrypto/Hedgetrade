@@ -111,7 +111,7 @@ const Dashboard = () => {
 
       <Grid container spacing={2}>
         <Grid item xs={12} md={9}>
-          <Typography variant="h5" className="dashboard-header">
+          <Typography variant="h4" className="dashboard-header">
             Featured BluePrints
           </Typography>
           <Grid container spacing={2}>
@@ -123,7 +123,7 @@ const Dashboard = () => {
           </Grid>
         </Grid>
         <Grid item xs={12} md={3}>
-          <Typography variant="h5" className="dashboard-header">
+          <Typography variant="h4" className="dashboard-header">
             LeaderBoard
           </Typography>
 
