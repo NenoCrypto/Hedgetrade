@@ -43,18 +43,18 @@ export const MenuConfig: MenuItem[] = [
     submenu: [],
     link:'/wallet'
   },
-  {
-    title: "Swap",
-    icon: ExchangeIcon,
-    submenu: [],
-    link:'/buy-aca-tokens'
-  },
-  {
-    title: "AutoTrader",
-    icon: ProductIcon,
-    submenu: [],
-    link:'/auto-trader'
-  },
+  // {
+  //   title: "Swap",
+  //   icon: ExchangeIcon,
+  //   submenu: [],
+  //   link:'/buy-aca-tokens'
+  // },
+  // {
+  //   title: "AutoTrader",
+  //   icon: ProductIcon,
+  //   submenu: [],
+  //   link:'/auto-trader'
+  // },
   {
     title: "BluePrints Market",
     icon: DashboardIcon,

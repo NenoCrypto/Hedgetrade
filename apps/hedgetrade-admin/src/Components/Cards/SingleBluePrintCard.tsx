@@ -17,7 +17,7 @@ import React from "react";
         <CardContent>
         <Grid container spacing={6}>
             <Grid item className="grid-row-item" xs={6} md={6}>
-              <Avatar variant="circle"  className={"blueprint-avatar"} />
+              <Avatar variant="circular"  className={"blueprint-avatar"} />
               <Typography variant="h6">Jimmy</Typography>
             </Grid>
             <Grid item className="grid-row-item" xs={6} md={6}>

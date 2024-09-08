@@ -1,7 +1,6 @@
 import { Avatar, Card, CardContent, Grid, Typography } from "@material-ui/core";
-import { DashboardIcon, DotsIcon, FireIcon, UsageIcon } from "../Icons";
+import { DotsIcon, FireIcon } from "../Icons";
 import "./card.css";
-import { Button } from "react-admin";
 import { StarIcon } from "../Icons";
 import React from "react";
 import { BluePrintDataLabel } from "../DataLabels";
@@ -13,11 +12,11 @@ export const BluePrintCard = () => {
         <Grid className="card-header" container spacing={4}>
           <Grid item className="grid-row-item-left" xs={6} md={6}>
             <Avatar
-              variant="circle"
+              variant="circular"
               sizes="24"
               className={"blueprint-avatar"}
             />
-            <Typography variant="body2">Jimmy</Typography>
+            <Typography variant="body2">Ghochef</Typography>
           </Grid>
           <Grid  item className="grid-row-item-right" xs={6} md={6}>
             <StarIcon size={12} />
@@ -36,7 +35,7 @@ export const BluePrintCard = () => {
 
           <Grid item xs={6} md={6}>
             <Typography variant="h4"  align="right" >
-              ETH/BTC
+              ETHUSDT
             </Typography>
           </Grid>
           </Grid>

@@ -8,8 +8,8 @@ const DashboardCardIcon = (props:any) => {
     border: '1px solid rgb(212, 118, 220)',
     borderRadius: '50%',
   } : {
-    padding: '10px',
-    border: '3px solid',
+    padding: '5px',
+    border: '2px solid',
     borderRadius: '50%',
     borderColor: props.color,
   };
@@ -18,9 +18,10 @@ const DashboardCardIcon = (props:any) => {
     <div className="dashboard-icon">
       <props.icon 
         style={iconStyle}
+        height={isSmallDevice ? 24 : 32}
+        width={isSmallDevice ? 24 : 32}
         color={props.color}
-        height={12} 
-        width={12} 
+        
       />
     </div>
   );

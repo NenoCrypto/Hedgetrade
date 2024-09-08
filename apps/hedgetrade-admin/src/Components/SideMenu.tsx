@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
     position: 'fixed', // Fixed position to ensure it's always visible
     top: 0,
     left: 0,
-    width: (props: { isMinimized: boolean }) => (props.isMinimized ? '60px' : '200px'), // Adjust width based on minimized state
+    width: (props: { isMinimized: boolean }) => (props.isMinimized ? '60px' : '15%'), // Adjust width based on minimized state
     overflowY: 'auto', // Add vertical scrolling if content overflows
     transition: 'width 0.3s', // Smooth transition
   },

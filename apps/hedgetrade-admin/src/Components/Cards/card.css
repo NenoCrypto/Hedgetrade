@@ -49,7 +49,7 @@
     justify-content: flex-start;
     align-items: center;
     color: #f2f2f2;
-    gap: 5px;
+    gap: 10px;
 }
 
 .grid-row-item-right{
@@ -66,7 +66,7 @@
 }
 
 .card-header{
-    border-bottom: 1px solid #b7a9a9;
+    border-bottom: 1px solid #504b4b;
     margin-bottom: 10px !important;    
 }
 
@@ -82,6 +82,10 @@
 .blueprint-button-text{
     font-size: 0.8rem !important;
 
+}
+
+.blueprint-buttons-container{
+    margin-top: 20px !important;
 }
 
 @media (max-width: 600px) {

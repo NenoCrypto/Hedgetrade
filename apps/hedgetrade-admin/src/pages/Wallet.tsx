@@ -1,58 +1,111 @@
-import { Grid, Typography } from "@material-ui/core";
-import React from "react";
-import { BluePrintCard } from "../Components/Cards/BluePrintCard";
+import React, { useState } from "react";
+import { useForm } from "react-hook-form";
+import {
+  Grid,
+  Card,
+  CardContent,
+  Typography,
+} from "@material-ui/core";
+import axios from "axios";
 
 const Wallet = () => {
+  const { handleSubmit, control } = useForm();
+  const loggedInUser = "cm0l3ojkh0002u7cn28olsmn1";
+  const [selectedPair, setSelectedPair] = useState<string>("BTCUSDT");
 
-    const blueprints = [
-        {
-          name: "Blueprint",
-          profile: "Profile",
-        },
-        {
-          name: "Blueprint",
-          profile: "Profile",
-        },
-        {
-          name: "Blueprint",
-          profile: "Profile",
-        },
-        {
-          name: "Blueprint",
-          profile: "Profile",
-        },
-        {
-          name: "Blueprint",
-          profile: "Profile",
-        },
-        {
-          name: "Blueprint",
-          profile: "Profile",
-        },
-        {
-          name: "Blueprint",
-          profile: "Profile",
-        },
-        {
-          name: "Blueprint",
-          profile: "Profile",
-        },
-        {
-          name: "Blueprint",
-          profile: "Profile",
-        },
-      ];
+  // const onSubmit = async (data: any) => {
+  //   const blueprintData = {
+  //     aiData: {}, // Add relevant AI data if applicable
+  //     buyPair: data.buyPair,
+  //     description: data.description || "",
+  //     exchange: data.exchange,
+  //     expiry: data.expiry,
+  //     maxOrder: data.maxOrder,
+  //     minOrder: data.orderPrice,
+  //     name: data.name || "Blueprint Name",
+  //     sellPair: data.sellPair,
+  //     stake: data.stake,
+  //     stakeAmount: parseFloat(data.stakeAmount) || 0,
+  //     stopLoss: data.stopLoss,
+  //     successRate: parseFloat(data.successRate) || 0,
+  //     takeProfit: data.takeProfit,
+  //     tradeType: data.tradeType,
+  //     user: {
+  //       id: loggedInUser,
+  //     },
+  //   };
+
+  //   const token =
+  //     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjbTBoeTYyOTYwMDAwemZhaDYwMHk3NW5rIiwidXNlcm5hbWUiOiJhZG1pbiIsImlhdCI6MTcyNTM3NzI3MywiZXhwIjoxNzI1NTUwMDczfQ.9rXTPUPHZpAqPXl-yyMefYTvDfUDBh_3Gg-k6iTImqE";
+
+  //   const headers = {
+  //     Authorization: `Bearer ${token}`,
+  //     "Content-Type": "application/json",
+  //   };
+
+  //   try {
+  //     const response = await axios.post(
+  //       "http://localhost:3002/api/blueprints",
+  //       blueprintData,
+  //       { headers }
+  //     );
+  //     console.log("Blueprint created successfully", response.data);
+  //   } catch (error) {
+  //     console.error("Error creating blueprint", error);
+  //   }
+  // };
 
   return (
     <div className="dashboard-container">
-      <Grid item xs={12} md={12}>
-        <Typography variant="h5" className="dashboard-header">BluePrints</Typography>
-        <Grid container spacing={2}>
-          {blueprints.map((blueprint, i) => (
-            <Grid key={i} item xs={12} md={3}>
-              <BluePrintCard />
-            </Grid>
-          ))}
+      <Typography variant="h5" className="dashboard-header">
+        Wallet
+      </Typography>
+
+      <Grid container spacing={4}>
+        <Grid item xs={12} md={4}>
+          <Card className="hedge-card">
+            <CardContent></CardContent>
+          </Card>
+        </Grid>
+
+        <Grid item xs={12} md={4}>
+          <Card className="hedge-card">
+            <CardContent>
+             
+            </CardContent>
+          </Card>
+        </Grid>
+
+        <Grid item xs={12} md={4}>
+          <Card className="hedge-card">
+            <CardContent>
+              <Typography variant="h6" gutterBottom>
+                Instructions
+              </Typography>
+
+              <Typography variant="subtitle1" gutterBottom>
+                Staking
+              </Typography>
+              <Typography variant="body2" paragraph>
+                Higher the stake, more confident you are in your prediction
+              </Typography>
+
+              <Typography variant="subtitle1" gutterBottom>
+                Expiry
+              </Typography>
+              <Typography variant="body2" paragraph>
+                Set expiry of your blueprints to your discretion
+              </Typography>
+
+              <Typography variant="subtitle1" gutterBottom>
+                Price limits
+              </Typography>
+              <Typography variant="body2" paragraph>
+                Set the minimum and maximum order price limits that you feel
+                should be followed
+              </Typography>
+            </CardContent>
+          </Card>
         </Grid>
       </Grid>
     </div>

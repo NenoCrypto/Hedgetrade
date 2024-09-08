@@ -11,6 +11,7 @@ import MyAccount from "../../pages/MyAccount";
 import MyBluePrints from "../../pages/MyBluePrints";
 import PurchasedBluePrints from "../../pages/PurchasedBluePrints";
 import Wallet from "../../pages/Wallet";
+import BluePrint from "../../pages/BluePrint";
 
 // Define the custom routes
 export const CustomRoutes = [
@@ -19,6 +20,7 @@ export const CustomRoutes = [
   <Route path="/my-blueprints" element={<MyBluePrints />} key="my-blueprints" />,
   <Route path="/blueprints-market" element={<BluePrintsMarket />} key="blueprint-marketplace" />,
   <Route path="/purchased-blueprints" element={<PurchasedBluePrints />} key="purchased-blueprints" />,
+  <Route path="/blueprint/:id" element={<BluePrint />} key="blueprint" />,
   <Route path="/my-account" element={<MyAccount />} key="my-account" />,
   <Route path="/leaderboard" element={<LeaderBoard />} key="leaderboard" />,
   <Route path="/how-ro-guide" element={<HowToGuide />} key="how-to-guides" />,

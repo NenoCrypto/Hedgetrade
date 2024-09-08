@@ -9,8 +9,8 @@ export const RobotIcon: React.FC<SVGProps<SVGSVGElement>> = (props) => {
       <defs>
         <style>
           {`
-            .cls-1, .cls-3 { fill: none; stroke: #ffffff; stroke-width: 2px; }
-            .cls-1 { stroke-linecap: round; stroke-linejoin: round; }
+            .cls-1, .cls-3 { fill: none; stroke: #ffffff; strokeWidth: 2px; }
+            .cls-1 { strokeLinecap: round; strokeLinejoin: round; }
             .cls-2 { fill: #ffffff; }
             .cls-3 { stroke-miterlimit: 10; }
           `}

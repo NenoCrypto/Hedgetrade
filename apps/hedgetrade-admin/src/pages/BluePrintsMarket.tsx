@@ -1,58 +1,32 @@
-import { Grid, Typography } from "@material-ui/core";
 import React from "react";
-import { BluePrintCard } from "../Components/Cards/BluePrintCard";
+import { useQuery } from "@apollo/client";
+import { Typography, Grid } from "@material-ui/core";
+import { BluePrintItemCard } from "../Components/Cards/BluePrintItemCard";
+import { GET_BLUEPRINTS } from "../data-provider/queries";
 
-const BluePrintsMarket = () => {
+const BluePrintsMarket: React.FC = () => {
+  const { loading, error, data } = useQuery(GET_BLUEPRINTS);
 
-    const blueprints = [
-        {
-          name: "Blueprint",
-          profile: "Profile",
-        },
-        {
-          name: "Blueprint",
-          profile: "Profile",
-        },
-        {
-          name: "Blueprint",
-          profile: "Profile",
-        },
-        {
-          name: "Blueprint",
-          profile: "Profile",
-        },
-        {
-          name: "Blueprint",
-          profile: "Profile",
-        },
-        {
-          name: "Blueprint",
-          profile: "Profile",
-        },
-        {
-          name: "Blueprint",
-          profile: "Profile",
-        },
-        {
-          name: "Blueprint",
-          profile: "Profile",
-        },
-        {
-          name: "Blueprint",
-          profile: "Profile",
-        },
-      ];
+  if (loading) {
+    return <Typography>Loading blueprints...</Typography>;
+  }
+
+  if (error) {
+    return <Typography color="error">Error fetching blueprints: {error.message}</Typography>;
+  }
 
   return (
     <div className="dashboard-container">
-        <Typography variant="h5" className="dashboard-header">BluePrints Market</Typography>
-        <Grid container spacing={2}>
-          {blueprints.map((blueprint, i) => (
-            <Grid key={i} item xs={12} md={3}>
-              <BluePrintCard />
-            </Grid>
-          ))}
-        </Grid>
+      <Typography variant="h5" className="dashboard-header">
+        BluePrints Market
+      </Typography>
+      <Grid container spacing={2}>
+        {data.blueprints.map((blueprint: any) => (
+          <Grid key={blueprint.id} item xs={12} md={3}>
+            <BluePrintItemCard blueprint={blueprint} />
+          </Grid>
+        ))}
+      </Grid>
     </div>
   );
 };

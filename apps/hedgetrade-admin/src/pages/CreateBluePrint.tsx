@@ -13,6 +13,7 @@ import { NoteBookIconServer } from "../Components/Icons";
 import axios from "axios";
 import { MarketDropdown } from "../Components/Form/MarketDropdown"; // Import the MarketDropdown component
 import FormInput from "../Components/Form/FormInput";
+import CreateBluePrintForm from "../Components/Form/CreateBluePrintForm";
 
 const CreateBluePrint = () => {
   const { handleSubmit, control } = useForm();
@@ -63,231 +64,17 @@ const CreateBluePrint = () => {
 
   return (
     <div className="dashboard-container">
-              <Typography variant="h5" className="dashboard-header">Create BluePrint</Typography>
-
+      <Typography variant="h5" className="dashboard-header">
+        Create BluePrint
+      </Typography>
       <Grid container spacing={4}>
         <Grid item xs={12} md={5}>
           <Card className="hedge-card">
             <CardContent>
-              <div className="flex-row">
-                {/* <Typography variant="h6" gutterBottom>
-                  Create Blueprint
-                </Typography> */}
-
-                <a href="#">
-                  <NoteBookIconServer />
-                </a>
-              </div>
-              <form onSubmit={handleSubmit(onSubmit)}>
-                <Grid container spacing={2}>
-                  <Grid item xs={12} sm={6}>
-                    <Controller
-                      name="exchange"
-                      control={control}
-                      defaultValue=""
-                      render={({ field }) => (
-                        <TextField
-                          {...field}
-                          label="Exchange"
-                          variant="outlined"
-                          fullWidth
-                        />
-                      )}
-                    />
-                  </Grid>
-
-                  <Grid item xs={12} sm={6}>
-                    <Controller
-                      name="Trade Pair"
-                      control={control}
-                      defaultValue=""
-                      render={({ field }) => (
-                        <MarketDropdown
-                          value={selectedPair}
-                          onChange={(event) =>
-                            setSelectedPair(event.target.value as string)
-                          }
-                          onBlur={() => {}}
-                          name="tradingPair"
-                        />
-                      )}
-                    />
-                  </Grid>
-
-                  <Grid item xs={12} sm={6}>
-                    <Controller
-                      name="tradeType"
-                      control={control}
-                      defaultValue=""
-                      render={({ field }) => (
-                        <TextField
-                          {...field}
-                          label="Trade Type"
-                          variant="outlined"
-                          fullWidth
-                        />
-                      )}
-                    />
-                  </Grid>
-
-                  <Grid item xs={12} sm={6}>
-                    <Controller
-                      name="stake"
-                      control={control}
-                      defaultValue=""
-                      render={({ field }) => (
-                        <TextField
-                          {...field}
-                          label="Stake"
-                          variant="outlined"
-                          fullWidth
-                        />
-                      )}
-                    />
-                  </Grid>
-
-                  <Grid item xs={12} sm={6}>
-                    <Controller
-                      name="expiry"
-                      control={control}
-                      defaultValue=""
-                      render={({ field }) => (
-                        <TextField
-                          {...field}
-                          label="Expiry"
-                          variant="outlined"
-                          fullWidth
-                        />
-                      )}
-                    />
-                  </Grid>
-
-                  <Grid item xs={12} sm={6}>
-                    <Controller
-                      name="orderPrice"
-                      control={control}
-                      defaultValue=""
-                      render={({ field }) => (
-                        <TextField
-                          {...field}
-                          label="Min Order"
-                          variant="outlined"
-                          fullWidth
-                        />
-                      )}
-                    />
-                  </Grid>
-
-                  <Grid item xs={12} sm={6}>
-                    <Controller
-                      name="maxOrder"
-                      control={control}
-                      defaultValue=""
-                      render={({ field }) => (
-                        <TextField
-                          {...field}
-                          label="Max Order"
-                          variant="outlined"
-                          fullWidth
-                        />
-                      )}
-                    />
-                  </Grid>
-
-                  <Grid item xs={12} sm={6}>
-                    <Controller
-                      name="takeProfit"
-                      control={control}
-                      defaultValue=""
-                      render={({ field }) => (
-                        <TextField
-                          {...field}
-                          label="Take Profit"
-                          variant="outlined"
-                          fullWidth
-                        />
-                      )}
-                    />
-                  </Grid>
-
-                  <Grid item xs={12} sm={6}>
-                    <Controller
-                      name="stopLoss"
-                      control={control}
-                      defaultValue=""
-                      render={({ field }) => (
-                        <TextField
-                          {...field}
-                          label="Stop Loss"
-                          variant="outlined"
-                          fullWidth
-                        />
-                      )}
-                    />
-                  </Grid>
-
-                  <Grid item xs={12} sm={6}>
-                    <Controller
-                      name="successRate"
-                      control={control}
-                      defaultValue=""
-                      render={({ field }) => (
-                        <TextField
-                          {...field}
-                          label="Success Rate"
-                          variant="outlined"
-                          fullWidth
-                        />
-                      )}
-                    />
-                  </Grid>
-
-                  {/* <Grid item xs={12}>
-                    <Controller
-                      name="stakeAmount"
-                      control={control}
-                      defaultValue=""
-                      render={({ field }) => (
-                        <TextField
-                          {...field}
-                          label="Stake Amount"
-                          variant="outlined"
-                          fullWidth
-                        />
-                      )}
-                    />
-                  </Grid> */}
-
-                  {/* <Grid item xs={12}>
-                    <Controller
-                      name="description"
-                      control={control}
-                      defaultValue=""
-                      render={({ field }) => (
-                        <TextField
-                          {...field}
-                          label="Description"
-                          variant="outlined"
-                          fullWidth
-                          multiline
-                          rows={4}
-                        />
-                      )}
-                    />
-                  </Grid> */}
-
-                  <Grid item xs={12}>
-                    <Button
-                      type="submit"
-                      variant="contained"
-                      color="primary"
-                      fullWidth
-                    >
-                      Submit
-                    </Button>
-                  </Grid>
-                </Grid>
-              </form>
+              <CreateBluePrintForm
+                selectedPair={selectedPair}
+                setSelectedPair={setSelectedPair}
+              />
             </CardContent>
           </Card>
         </Grid>
@@ -295,7 +82,6 @@ const CreateBluePrint = () => {
         <Grid item xs={12} md={7}>
           <Card className="hedge-card">
             <CardContent>
-           
               <TradingViewChart
                 selectedPair={selectedPair}
                 setSelectedPair={setSelectedPair}

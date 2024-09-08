@@ -12,17 +12,17 @@ export const LeaderBoardCard = () => {
       <Grid className="" container spacing={4}>
         <Grid item className="grid-row-item-left" xs={6} md={6}>
           <Avatar
-            variant="circle"
+            variant="circular"
             sizes="24"
             className={"blueprint-avatar"}
           />
-          <Typography variant="body2">Jimmy</Typography>
+          <Typography variant="body2">Ghochef</Typography>
 
-          {/* <Grid className="grid-row-item-left" item xs={6} md={6}>
+          <Grid className="grid-row-item-left" item xs={6} md={6}>
           <FireIcon size={12} />
           <FireIcon size={12} />
           <FireIcon size={12} />
-        </Grid> */}
+        </Grid>
         </Grid>
         <Grid  item className="grid-row-item-right" xs={6} md={6}>
           <StarIcon size={12} />
