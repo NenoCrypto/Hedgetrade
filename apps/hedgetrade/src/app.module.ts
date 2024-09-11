@@ -1,4 +1,12 @@
 import { Module } from "@nestjs/common";
+import { APP_GUARD } from "@nestjs/core";
+import { ConfigModule, ConfigService } from "@nestjs/config";
+import { ServeStaticModule } from "@nestjs/serve-static";
+import { GraphQLModule } from "@nestjs/graphql";
+import { ApolloDriver, ApolloDriverConfig } from "@nestjs/apollo";
+import { LoggerModule } from "./logger/logger.module";
+import { ACLModule } from "./auth/acl.module";
+import { AuthModule } from "./auth/auth.module";
 import { UserModule } from "./user/user.module";
 import { LeaderboardModule } from "./leaderboard/leaderboard.module";
 import { BlueprintModule } from "./blueprint/blueprint.module";
@@ -10,34 +18,11 @@ import { AppUserModule } from "./appUser/appUser.module";
 import { HealthModule } from "./health/health.module";
 import { PrismaModule } from "./prisma/prisma.module";
 import { SecretsManagerModule } from "./providers/secrets/secretsManager.module";
-import { ServeStaticModule } from "@nestjs/serve-static";
 import { ServeStaticOptionsService } from "./serveStaticOptions.service";
-import { ConfigModule, ConfigService } from "@nestjs/config";
-import { GraphQLModule } from "@nestjs/graphql";
-import { ApolloDriver, ApolloDriverConfig } from "@nestjs/apollo";
-
-import { LoggerModule } from "./logger/logger.module";
-
-import { ACLModule } from "./auth/acl.module";
-import { AuthModule } from "./auth/auth.module";
+import { GqlDefaultAuthGuard } from "./auth/gqlDefaultAuth.guard"; // Ensure correct path for GqlDefaultAuthGuard
 
 @Module({
-  controllers: [],
   imports: [
-    ACLModule,
-    AuthModule,
-    LoggerModule,
-    UserModule,
-    LeaderboardModule,
-    BlueprintModule,
-    TransactionModule,
-    AdminModule,
-    StakeModule,
-    NotificationModule,
-    AppUserModule,
-    HealthModule,
-    PrismaModule,
-    SecretsManagerModule,
     ConfigModule.forRoot({ isGlobal: true }),
     ServeStaticModule.forRootAsync({
       useClass: ServeStaticOptionsService,
@@ -57,7 +42,26 @@ import { AuthModule } from "./auth/auth.module";
       inject: [ConfigService],
       imports: [ConfigModule],
     }),
+    LoggerModule,
+    ACLModule,
+    AuthModule,
+    UserModule,
+    LeaderboardModule,
+    BlueprintModule,
+    TransactionModule,
+    AdminModule,
+    StakeModule,
+    NotificationModule,
+    AppUserModule,
+    HealthModule,
+    PrismaModule,
+    SecretsManagerModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: APP_GUARD,
+      useClass: GqlDefaultAuthGuard,  // Apply the guard globally
+    },
+  ],
 })
 export class AppModule {}

@@ -111,24 +111,46 @@ input AppUserWhereUniqueInput {
 }
 
 type Blueprint {
+  aiData: JSON
+  buyPair: String
   createdAt: DateTime!
   description: String
+  exchange: String
+  expiry: String
   id: String!
+  maxOrder: String
+  minOrder: String
   name: String
+  sellPair: String
+  stake: String
   stakeAmount: Float
   stakes(orderBy: [StakeOrderByInput!], skip: Float, take: Float, where: StakeWhereInput): [Stake!]!
+  stopLoss: String
   successRate: Float
+  takeProfit: String
+  tradeType: String
   transactions(orderBy: [TransactionOrderByInput!], skip: Float, take: Float, where: TransactionWhereInput): [Transaction!]!
   updatedAt: DateTime!
   user: User
 }
 
 input BlueprintCreateInput {
+  aiData: JSON
+  buyPair: String
   description: String
+  exchange: String
+  expiry: String
+  maxOrder: String
+  minOrder: String
   name: String
+  sellPair: String
+  stake: String
   stakeAmount: Float
   stakes: StakeCreateNestedManyWithoutBlueprintsInput
+  stopLoss: String
   successRate: Float
+  takeProfit: String
+  tradeType: String
   transactions: TransactionCreateNestedManyWithoutBlueprintsInput
   user: UserWhereUniqueInput
 }
@@ -144,22 +166,44 @@ input BlueprintListRelationFilter {
 }
 
 input BlueprintOrderByInput {
+  aiData: SortOrder
+  buyPair: SortOrder
   createdAt: SortOrder
   description: SortOrder
+  exchange: SortOrder
+  expiry: SortOrder
   id: SortOrder
+  maxOrder: SortOrder
+  minOrder: SortOrder
   name: SortOrder
+  sellPair: SortOrder
+  stake: SortOrder
   stakeAmount: SortOrder
+  stopLoss: SortOrder
   successRate: SortOrder
+  takeProfit: SortOrder
+  tradeType: SortOrder
   updatedAt: SortOrder
   userId: SortOrder
 }
 
 input BlueprintUpdateInput {
+  aiData: JSON
+  buyPair: String
   description: String
+  exchange: String
+  expiry: String
+  maxOrder: String
+  minOrder: String
   name: String
+  sellPair: String
+  stake: String
   stakeAmount: Float
   stakes: StakeUpdateManyWithoutBlueprintsInput
+  stopLoss: String
   successRate: Float
+  takeProfit: String
+  tradeType: String
   transactions: TransactionUpdateManyWithoutBlueprintsInput
   user: UserWhereUniqueInput
 }
@@ -171,12 +215,23 @@ input BlueprintUpdateManyWithoutUsersInput {
 }
 
 input BlueprintWhereInput {
+  aiData: JsonFilter
+  buyPair: StringNullableFilter
   description: StringNullableFilter
+  exchange: StringNullableFilter
+  expiry: StringNullableFilter
   id: StringFilter
+  maxOrder: StringNullableFilter
+  minOrder: StringNullableFilter
   name: StringNullableFilter
+  sellPair: StringNullableFilter
+  stake: StringNullableFilter
   stakeAmount: FloatNullableFilter
   stakes: StakeListRelationFilter
+  stopLoss: StringNullableFilter
   successRate: FloatNullableFilter
+  takeProfit: StringNullableFilter
+  tradeType: StringNullableFilter
   transactions: TransactionListRelationFilter
   user: UserWhereUniqueInput
 }
@@ -257,6 +312,16 @@ input IntNullableFilter {
 The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
 """
 scalar JSON
+
+"""
+The `JSONObject` scalar type represents JSON objects as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
+scalar JSONObject
+
+input JsonFilter {
+  equals: JSONObject
+  not: JSONObject
+}
 
 type Leaderboard {
   createdAt: DateTime!
