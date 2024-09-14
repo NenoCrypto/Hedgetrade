@@ -1,8 +1,4 @@
-<p align="right">
-  <a href="https://amplication.com" target="_blank">
-    <img alt="amplication-logo" height="70" alt="Amplication Logo" src="https://amplication.com/images/logo.svg"/>
-  </a>
-</p>
+
 
 # Introduction
 
@@ -62,3 +58,4 @@ By default, your app comes with one user with the username "admin" and password 
 # start the server component as a docker container
 $ npm run compose:up
 ```
+# File-Share
